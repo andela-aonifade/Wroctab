@@ -35,6 +35,7 @@ coverage
 screenshots
 server/test/reports/
 client/test/reports/
+dist/
 
 # Optional npm cache directory
 .npm
