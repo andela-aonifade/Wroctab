@@ -1,4 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/andela-aonifade/wroctab/badge.svg?branch=staging)](https://coveralls.io/github/andela-aonifade/wroctab?branch=staging) [![Build Status](https://travis-ci.org/andela-aonifade/wroctab.svg?branch=master)](https://travis-ci.org/andela-aonifade/wroctab) [![Code Climate](https://codeclimate.com/github/andela-aonifade/wroctab/badges/gpa.svg)](https://codeclimate.com/github/andela-aonifade/wroctab)
+[![Coverage Status](https://coveralls.io/repos/github/andela-aonifade/Wroctab/badge.svg?branch=feature%2F144330699%2Fuser-document-search)](https://coveralls.io/github/andela-aonifade/Wroctab?branch=feature%2F144330699%2Fuser-document-search) [![Build Status](https://travis-ci.org/andela-aonifade/Wroctab.svg?branch=feature%2F144330699%2Fuser-document-search)](https://travis-ci.org/andela-aonifade/Wroctab)
+[(https://codeclimate.com/github/andela-aonifade/wroctab/badges/gpa.svg)](https://codeclimate.com/github/andela-aonifade/wroctab)
 
 # Document Management System
 Wroctab is a full stack document management system that helps to manage documents given the different accessibility. Worctab contains a backend API and frontend developed with React using Redux architecture.
