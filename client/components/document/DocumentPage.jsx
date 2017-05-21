@@ -30,38 +30,25 @@ class DocumentPage extends React.Component {
 
   render() {
     const { myDocuments } = this.props;
-    const count = myDocuments.length;
+    // const count = myDocuments.length;
     return (
       <div className="row">
-          <div id="documentPage" className="col s12 z-depth-5 card-panel">
-            <h4>My Documents</h4>
+          <div id="documentPage" className="col s12">
+            <h4 className="header-text center">MY DOCUMENTS</h4>
         <div id="addBtnDiv"
           className="fixed-action-btn" onClick={this.deleteClick}>
           <a
-  className="btn-floating btn-large waves-effect waves-light red tooltipped"
+  className="btn-floating btn-large waves-effect waves-light teal tooltipped"
   data-position="left" data-delay="50"
-  data-tooltip="create new document"
-  >
+  data-tooltip="create new document">
             <i className="material-icons">add</i>
           </a>
         </div>
-        <div className="row">
-          <div className="col s12">
-            <div className="row">
-              <div className="col s5">
-                <div id="card-alert" className="card deep-purple lighten-5">
-                          <div className="card-content deep-purple-text">
-                            <p>INFO : You have {count} Documents</p>
-                          </div>
-                        </div>
-              </div>
-              <div className="col s7">
-                <DocumentList myDocuments={myDocuments}/>
-              </div>
+          <div className="row">
+            <div className="col s12">
+              <DocumentList myDocuments={myDocuments}/>
             </div>
           </div>
-
-        </div>
         <Modal />
       </div>
       </div>

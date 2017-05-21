@@ -14,7 +14,7 @@ export const users = [{
   password: 'password',
   roleId: 1
 }, {
-  name: 'Subair anuoluwapo',
+  name: 'Onifade anuoluwapo',
   username: 'anuonifade',
   email: 'anuonifade@gmail.com',
   password: 'password',

@@ -113,7 +113,7 @@ class UserSearchList extends React.Component {
                 </a>
               </li>
               <li onClick={this.renderAlert}>
-                <a className="btn-floating red darken-1 tooltipped"
+                <a className="btn-floating teal darken-1 tooltipped"
                   data-position="bottom" data-delay="50"
                   data-tooltip="delete document"
                   >

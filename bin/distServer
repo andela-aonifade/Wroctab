@@ -8,17 +8,21 @@ import app from '../server/app'; // express server
 
 /* eslint-disable no-console */
 
-const port = parseInt(process.env.PORT, 10) || 8080;
+const port = process.env.PORT || 8080;
+
+const staticUrl = process.env.NODE_ENV === 'production' ? '../' : '../dist/';
 
 app.use(compression());
-app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, staticUrl)));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, `${staticUrl}index.html`));
 });
 
 app.listen(port, (err) => {
   if (err) {
-    console.log(err);
+    console.log('error', err);
+  } else {
+    console.log(`server running on port ${process.env.PORT}`);
   }
 });

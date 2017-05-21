@@ -47,8 +47,7 @@ class ProfilePage extends React.Component {
     return (
     <div>
       <div className="row">
-        <div className="col s12">
-          <div className="ol s12 z-depth-5 card-panel">
+        <div className="col s12" id="transparent90">
             <div className="center-align">
               <img src={userProfilePic} className="responsive-img"/>
             </div>
@@ -75,7 +74,6 @@ class ProfilePage extends React.Component {
               }
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

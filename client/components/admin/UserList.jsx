@@ -95,9 +95,9 @@ class UserList extends React.Component {
       {this
         .props
         .allUsers
-        .map(user => <div id="card-alert" className="card white"
+        .map(user => <div id="card-alert" className="card"
         key={user.id}>
-          <div className="card-content teal-text">
+          <div className="card-content teal-text transparent80">
             {user.name} - {user.email}
           </div>
           <div className="fixed-action-btn horizontal click-to-toggle edit">
@@ -125,10 +125,9 @@ class UserList extends React.Component {
                 </a>
               </li>
               <li onClick={this.renderAlert}>
-                <a className="btn-floating red darken-1 tooltipped"
+                <a className="btn-floating red accent-4 tooltipped"
                   data-position="bottom" data-delay="50"
-                  data-tooltip="delete document"
-                  >
+                  data-tooltip="delete document">
                   <i id={user.id} className="material-icons">delete</i>
                 </a>
               </li>

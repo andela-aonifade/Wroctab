@@ -111,7 +111,7 @@ class UserForm extends React.Component {
     const hasValue = this.props.selectedUser;
 
     const form = (
-      <div className="col s12 z-depth-5 card-panel">
+      <div className="col s12 m12 z-depth-5 card-panel transparent80">
         <form className="login-form">
           <div className="row margin">
             <TextInput

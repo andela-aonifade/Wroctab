@@ -1,1 +1,1 @@
-web: babel-node bin/distServer
+web: npm start

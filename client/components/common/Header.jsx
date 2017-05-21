@@ -69,16 +69,16 @@ class Header extends React.Component {
     const guestLinks = (
       <ul>
         <li activeClassName="active">
-          <Link to="/signup">Sign up</Link>
         </li>
       </ul>
     );
     return (
       <div>
-      <nav className="teal darken-3">
+      <nav className="teal darken-3 navbar-fixed">
         <div className="nav-wrapper">
           <div className="navheader">
-            <Link to="/" className="brand-logo">Wroctab</Link>
+            <Link to="/" className="brand-logo header-text black-color">
+            WROCTAB</Link>
           </div>
           <a href="#" data-activates="mobile-demo" className="button-collapse">
             <i className="material-icons">menu</i>
@@ -90,13 +90,7 @@ class Header extends React.Component {
                 : guestLinks}
             </li>
           </ul>
-          <ul id="mobile-demo" className="side-nav">
-            <li>
-              {isAuthenticated
-                ? userLinks
-                : guestLinks}
-            </li>
-          </ul>
+
         </div>
       </nav>
         <SearchModal/>

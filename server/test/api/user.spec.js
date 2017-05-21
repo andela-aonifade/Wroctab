@@ -180,7 +180,7 @@ describe('User API', () => {
 
   describe('/PUT update user', () => {
     const fieldsToUpdate = {
-      name: 'Subair Oyin',
+      name: 'Onifade Anu',
     };
     it('should update user data ', (done) => {
       server

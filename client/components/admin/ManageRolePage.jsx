@@ -42,7 +42,7 @@ class ManangeRolePage extends React.Component {
               className="btn-floating teal closeModal">
               <i className="material-icons">close</i></a>
           </div>
-          <h6>Update Role</h6>
+          <h6 className="white-text">Update Role</h6>
           <RoleForm />
         </div>
       );
@@ -55,22 +55,21 @@ class ManangeRolePage extends React.Component {
       <div>
         <div className="row">
           <div className="col s12">
-            <div className="col s12 z-depth-5 card-panel card-body">
+            <div className="col s12">
               <div className="fixed-action-btn" onClick={this.openFormClick}>
                 <a
-      className="btn-floating btn-large waves-effect waves-light red tooltipped"
+      className="btn-floating btn-large waves-effect waves-light teal tooltipped"
         data-position="left" data-delay="50"
-        data-tooltip="create new role"
-        >
+        data-tooltip="create new role">
                   <i className="material-icons">add</i>
                 </a>
               </div>
-              <h4>All Roles</h4>
+              <h4 className="header-text center">All Roles</h4>
             <div className="row">
-                <div className="col s6">
+                <div className="col s12 m6">
                 <RoleList allRoles={allRoles} />
                 </div>
-                <div className="col s6">
+                <div className="col s12 m6">
                   {this.state.viewForm ?
                     <div>
                       <div>
@@ -78,7 +77,7 @@ class ManangeRolePage extends React.Component {
                           className="btn-floating teal closeModal">
                           <i className="material-icons">close</i></a>
                       </div>
-                      <h6>Add New Role</h6>
+                      <h6 className="white-text">Add New Role</h6>
                       <RoleForm currentRole={currentRole} />
                     </div>
                      :
