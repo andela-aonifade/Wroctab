@@ -2,45 +2,53 @@ import expect from 'expect';
 import * as userActions from '../../../client/actions/userActions';
 import types from '../../../client/actions/actionTypes';
 
+
+const testUser = {
+  name: 'test actions',
+  username: 'testreduce',
+  email: 'testreduce@gmail.com',
+  password: 'password',
+  roleId: 2
+};
+const testUsers = [{
+  name: 'Onifade Anuoluwapo',
+  username: 'testreduce',
+  email: 'testreduce@gmail.com',
+  password: 'password',
+  roleId: 2
+},
+{
+  name: 'John Doe',
+  username: 'testjohndoe',
+  email: 'testjohndoe@gmail.com',
+  password: 'password',
+  roleId: 1
+}];
 // Test a sync action
 describe('User Actions', () => {
   describe('createUserSuccess', () => {
     it('should create a CREATE_USER_SUCCESS action', (done) => {
       // arrange
-      const user = {
-        name: 'test actions',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
       const expectedAction = {
         type: types.CREATE_USER_SUCCESS,
-        user
+        user: testUser
       };
       // act
-      const action = userActions.createUserSuccess(user);
+      const action = userActions.createUserSuccess(testUser);
       // assert
       expect(action).toEqual(expectedAction);
       done();
     });
   });
-  describe('getUserSuccess', () => {
-    it('should get user when passed GET_USERS_SUCCESS', (done) => {
-      const newUser = {
-        name: 'Subair Oyindamola',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
-      const name = 'Subair Oyindamola';
+  describe('loadAllUsersSuccess', () => {
+    it('should get users when passed LOAD_ALLUSERS_SUCCESS', (done) => {
+
       const expectedAction = {
-        type: types.GET_USERS_SUCCESS,
-        name
+        type: types.LOAD_ALLUSERS_SUCCESS,
+        users: testUsers
       };
 
-      const action = userActions.getUserSuccess(newUser.name);
+      const action = userActions.loadAllUsersSuccess(testUsers);
       // assert
       expect(action).toEqual(expectedAction);
       done();
@@ -50,19 +58,12 @@ describe('User Actions', () => {
   describe('loadUserSuccess', () => {
     it('should load user, LOAD_USER_SUCCESS action', (done) => {
       // arrange
-      const users = {
-        name: 'test actions',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
       const expectedAction = {
         type: types.LOAD_USERS_SUCCESS,
-        users
+        users: testUser
       };
       // act
-      const action = userActions.loadUserSuccess(users);
+      const action = userActions.loadUserSuccess(testUser);
       // assert
       expect(action).toEqual(expectedAction);
       done();
@@ -72,21 +73,12 @@ describe('User Actions', () => {
   describe('setCurrentUser', () => {
     it('should set current logged in user, SET_CURRENT_USER action', (done) => {
       // arrange
-      const user = {
-        id: 1,
-        name: 'test actions',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
-
       const expectedAction = {
         type: types.SET_CURRENT_USER,
-        user
+        user: testUser
       };
       // act
-      const action = userActions.setCurrentUser(user);
+      const action = userActions.setCurrentUser(testUser);
       // assert
       expect(action).toEqual(expectedAction);
       done();
@@ -97,21 +89,13 @@ describe('User Actions', () => {
     it('should get selected user from list, SET_SELECTED_USER action',
     (done) => {
       // arrange
-      const user = {
-        id: 1,
-        name: 'test actions',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
-      const id = user.id;
+      const id = testUser.id;
       const expectedAction = {
         type: types.SET_SELECTED_USER,
         id
       };
       // act
-      const action = userActions.setSelectedUser(user.id);
+      const action = userActions.setSelectedUser(testUser.id);
       // assert
       expect(action).toEqual(expectedAction);
       done();
@@ -122,21 +106,13 @@ describe('User Actions', () => {
     it('should display details of selected user, DISPLAY_SELECT_USER action',
     (done) => {
       // arrange
-      const user = {
-        id: 1,
-        name: 'test actions',
-        username: 'testreduce',
-        email: 'testreduce@gmail.com',
-        password: 'password',
-        roleId: 2
-      };
-      const id = user.id;
+      const id = testUser.id;
       const expectedAction = {
         type: types.DISPLAY_SELECT_USER,
         id
       };
       // act
-      const action = userActions.displaySelectedUser(user.id);
+      const action = userActions.displaySelectedUser(testUser.id);
       // assert
       expect(action).toEqual(expectedAction);
       done();

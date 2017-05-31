@@ -7,8 +7,8 @@ module.exports = {
     browser
       .url('http://localhost:8080/login')
       .waitForElementVisible('body')
-      .assert.title('Document Management System')
-      .saveScreenshot('doc-man-login.png')
+      .assert.title('Wroctab')
+      .saveScreenshot('wroctab-login.png')
       .end();
   },
 
@@ -34,10 +34,11 @@ module.exports = {
       .waitForElementVisible('nav', 5000)
       .assert.urlEquals('http://localhost:8080/')
       .assert.containsText('h4', 'DASHBOARD')
-      .assert.containsText('nav', 'Doc Management')
+      .assert.containsText('nav', 'Dashboard')
       .assert.containsText('nav', 'My Documents')
       .assert.containsText('nav', 'Manage Users')
       .assert.containsText('nav', 'Manage Roles')
+      .assert.containsText('nav', 'Logout')
       .assert.cssClassPresent('#adminTab', 'admin')
       .assert.containsText('nav', 'Logout')
       .click('nav ul li a#logout')

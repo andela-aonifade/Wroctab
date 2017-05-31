@@ -2,16 +2,14 @@
  * Documents action, disptach action and
  * action types of each action to the reducer
  */
-
 import axios from 'axios';
 import types from './actionTypes';
 
 /**
- *
  * loaddocumentsuccess
  * @export
  * @param {any} documents  returned documents from api call
- * @returns {any} action and action types
+ * @returns {object} action and action types
  */
 export function loadDocumentSuccess(documents) {
   return { type: types.LOAD_DOCUMENT_SUCCESS, documents };
@@ -22,7 +20,7 @@ export function loadDocumentSuccess(documents) {
  *
  * @export
  * @param {any} document newly create document reponse from api post
- * @returns {any} action and action types
+ * @returns {object} action and action types
  */
 export function createDocumentSuccess(document) {
   return {
@@ -36,7 +34,7 @@ export function createDocumentSuccess(document) {
  * dispatch to reducer the selected document
  * @export
  * @param {any} id
- * @returns {any} document id
+ * @returns {object} document id
  */
 export function setCurrentDocument(id) {
   return {
@@ -50,7 +48,7 @@ export function setCurrentDocument(id) {
  * disptch to reducer the currently displayed document details
  * @export
  * @param {any} id
- * @returns {any} document id
+ * @returns {object} document id
  */
 export function displayCurrentDocument(id) {
   return {
@@ -61,7 +59,7 @@ export function displayCurrentDocument(id) {
 
 /**
  * delete from state the currently selected document
- * @return {[type]} [description]
+ * @return {object} Object
  */
 export function deleteCurrentDocument() {
   return {
@@ -86,7 +84,7 @@ export function loadUserDocument() {
 }
 
 /**
- * get all document from data base with admin authentication
+ * get all document from endpoint database with admin authentication
  * using api route /documents
  *
  * @export
@@ -94,7 +92,7 @@ export function loadUserDocument() {
  */
 export function loadAllDocument() {
   return (dispatch) => {
-    return axios.get('documents').then((res) => {
+    return axios.get('/documents').then((res) => {
       dispatch(loadDocumentSuccess(res.data));
     });
   };

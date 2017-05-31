@@ -24,7 +24,6 @@ class UserList extends React.Component {
     this.updateSelectState = this.updateSelectState.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
-
   componentDidMount() {
     $('select').material_select();
     $('#mySelectBox').on('change', this.updateSelectState);
@@ -160,7 +159,9 @@ class UserList extends React.Component {
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
-            Select number of users to be displayed
+            <span className="white-text">
+              Select number of users to be displayed
+            </span>
           </div>
         </div>
       </div>

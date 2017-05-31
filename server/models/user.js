@@ -56,11 +56,26 @@ export default (sequelize, DataTypes) => {
        */
       verifyPassword(password) {
         return bcrypt.compareSync(password, this.password);
+      },
+       /**
+       * Hash the password before being saved to the database
+       * @method
+       * @param {string} password - Accepts the user's password to be encrypted.
+       * @returns {Void} no return
+       */
+      hashPassword(password) {
+        const salt = bcrypt.genSaltSync(8);
+        this.password = bcrypt.hashSync(this.password, salt);
       }
     },
     hooks: {
       beforeCreate: (user) => {
-        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+        return user.hashPassword();
+      },
+      beforeUpdate: (user) => {
+        if(user._changed.password){
+          user.hashPassword();
+        }
       }
     }
   });

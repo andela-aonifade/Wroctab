@@ -11,8 +11,7 @@ export default {
   devtool: 'source-map',
   noInfo: false,
   entry: {
-    bundle: path.resolve(__dirname, 'client/index'),
-    distServer: path.resolve(__dirname, 'bin/distServer'),
+    bundle: path.resolve(__dirname, 'client/index')
   },
   target: 'web',
   output: {

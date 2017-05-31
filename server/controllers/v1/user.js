@@ -149,6 +149,10 @@ export default {
             if (!user) {
               return res.status(404).send({ message: 'User Not Found' });
             }
+            if (user.username === 'superadmin') {
+              return res.status(403)
+                .send({ message: 'You cannot delete the super admin' });
+            }
             return user
               .destroy()
               .then(() => res.status(200).send({

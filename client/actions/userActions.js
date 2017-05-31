@@ -6,6 +6,8 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 /**
  * loadUserSuccess,
  * action dispatched on getting a user records from db
+ *
+ * @export
  * @param  {object} users user response fron api call in the thunk
  * @return {object}      reponse dispatched to reducer
  */
@@ -19,6 +21,8 @@ export function loadUserSuccess(users) {
 /**
  * loadAllUsersSuccess
  * action dispatched on getting all users records from db
+ *
+ * @export
  * @param  {object} users user response fron api call in the thunk
  * @return {object}      reponse dispatched to reducer
  */
@@ -46,6 +50,7 @@ export function setCurrentUser(user) {
 /**
  *
  * add to state the currently selected user
+ *
  * @export
  * @param {any} id
  * @returns {any} user id
@@ -59,6 +64,8 @@ export function setSelectedUser(id) {
 
 /**
  * display details of current user
+ *
+ * @export
  * @param {number} id selected user id
  * @return {object} object of action
  */
@@ -71,6 +78,8 @@ export function displaySelectedUser(id) {
 
 /**
  * remove from state the currently selected user
+ *
+ * @export
  * @return {object} action [description]
  */
 export function deleteSelectedUser() {
@@ -103,6 +112,8 @@ export function getUserSuccess(name) {
 
 /**
  * update user success
+ *
+ * @export
  * @param  {object} user updated user new details
  * @return {object}
  */
@@ -133,6 +144,8 @@ export function loginUserSuccess(token) {
 
 /**
  * get authenticated user details
+ *
+ * @export
  * @param  {object} user
  * @return {object}
  */
@@ -160,7 +173,7 @@ export function loginUserFailure() {
  * create new user using api route
  * POST /users/
  *
- * @export saveUser
+ * @export
  * @param {object} user
  * @returns {Object} api response
  */
@@ -182,6 +195,8 @@ export function saveUser(user) {
 /**
  * load users from the database using api route setting limit and offset
  * GET /users/?limit=%offset=
+ *
+ * @export
  * @param  {number} limit  [description]
  * @param  {number} offset [description]
  * @return {object}        [description]
@@ -197,6 +212,8 @@ export function loadUsers(limit, offset) {
 /**
  * load users from the database using api route setting limit and offset
  * GET /users/
+ *
+ * @export
  * @return {object} [all users]
  */
 export function loadAllUsers() {
@@ -211,6 +228,8 @@ export function loadAllUsers() {
 /**
  * get currently authenticated user using parameter user id
  * GET /users/:id
+ *
+ * @export
  * @param  {number} id
  * @return {object}
  */
@@ -225,6 +244,8 @@ export function getAuthUser(id) {
 /**
  * user update with admin authentication
  * PUT /users/:id
+ *
+ * @export
  * @param  {object} user [user data object to update]
  * @param  {number} id   user id
  * @return {object}      [api response]
@@ -240,6 +261,7 @@ export function updateUserAdmin(user, id) {
 /**
  * user update by account owner
  * GET /users/:id
+ * @export
  * @param  {object} user [user data object to update]
  * @param  {number} id   user id
  * @return {object}      [api response]
@@ -253,9 +275,9 @@ export function updateUser(user, id) {
 }
 
 /**
- *
  *create a new user by admin
  *POST /users/
+ *
  * @export saveUser
  * @param {any} user
  * @returns {Object} json object
@@ -308,7 +330,7 @@ export function deleteUser(id) {
  *
  * @export
  * @param {any} identifier
- * @returns {objeect} uuser
+ * @returns {object} uuser
  */
 export function isUserExists(identifier) {
   return () => {

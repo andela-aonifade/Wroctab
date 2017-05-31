@@ -1,8 +1,6 @@
 import types from './actionTypes';
 
 /**
- *
- *
  * @export
  * @param {any} message
  * @returns {any} message
@@ -15,8 +13,6 @@ export function addFlashMessage(message) {
 }
 
 /**
- *
- *
  * @export
  * @param {any} id
  * @returns {any} id

@@ -57,10 +57,10 @@ class ManangeRolePage extends React.Component {
           <div className="col s12">
             <div className="col s12">
               <div className="fixed-action-btn" onClick={this.openFormClick}>
-                <a
-      className="btn-floating btn-large waves-effect waves-light teal tooltipped"
-        data-position="left" data-delay="50"
-        data-tooltip="create new role">
+                <a className="btn-floating
+                  btn-large waves-effect waves-light teal tooltipped"
+                  data-position="left" data-delay="50"
+                  data-tooltip="create new role">
                   <i className="material-icons">add</i>
                 </a>
               </div>

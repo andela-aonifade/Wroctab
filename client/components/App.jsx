@@ -1,8 +1,11 @@
-// This component handles the App template used on every page.
+
 import React, { PropTypes } from 'react';
 import Header from './common/Header.jsx';
 import FlashMessagesList from './flash/FlashMessagesList.jsx';
 
+/**
+ * App Component class is the entry point of the application
+*/
 class App extends React.Component {
   componentDidMount() {
     $('.button-collapse').sideNav({

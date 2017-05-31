@@ -76,7 +76,7 @@ describe('Document API', () => {
   });
 
   describe('/GET Documents', () => {
-    it('should 401 for unauthorized user without token', (done) => {
+    it('should return 401 for unauthorized user without token', (done) => {
       server
         .get('/documents/?limit=10&offset=1')
         .end((err, res) => {
@@ -86,7 +86,7 @@ describe('Document API', () => {
         });
     });
 
-    it('should 200 for authorized user with token', (done) => {
+    it('should return 200 for authorized user with token', (done) => {
       server
         .get('/documents/?limit=10&offset=1')
         .set('x-access-token', adminUser.token)
@@ -97,7 +97,7 @@ describe('Document API', () => {
         });
     });
 
-    it('should 200 without limit and offset', (done) => {
+    it('should return 200 without limit and offset', (done) => {
       server
         .get('/documents/')
         .set('x-access-token', adminUser.token)
@@ -108,7 +108,7 @@ describe('Document API', () => {
         });
     });
 
-    it('should 403 for Unauthorized user', (done) => {
+    it('should return 403 for Unauthorized user', (done) => {
       server
         .get('/documents/?limit=10&offset=1')
         .set('x-access-token', regUserData.token)

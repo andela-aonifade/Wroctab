@@ -4,7 +4,7 @@ import middleware from '../middlewares';
 const rolesController = controller.roles;
 const usersController = controller.user;
 const authController = controller.auth;
-const docController = controller.document;
+const documentController = controller.document;
 const searchController = controller.search;
 const auth = middleware.authentication;
 
@@ -64,17 +64,17 @@ const Routes = (app) => {
    */
   app
     .route('/documents')
-    .post(verify, docController.create)
-    .get(verify, adminAccess, docController.list);
+    .post(verify, documentController.create)
+    .get(verify, adminAccess, documentController.list);
 
   app
     .route('/documents/:id')
-    .get(verify, docController.retrieve)
-    .put(verify, docController.update)
-    .delete(verify, docController.destroy);
+    .get(verify, documentController.retrieve)
+    .put(verify, documentController.update)
+    .delete(verify, documentController.destroy);
 
   app.route('/users/:id/alldocuments')
-.get(verify, docController.findAllUserDocument);
+.get(verify, documentController.findAllUserDocument);
 
   /**
    * Search API

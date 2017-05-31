@@ -8,18 +8,18 @@ import app from '../server/app'; // express server
 
 /* eslint-disable no-console */
 
-const port = process.env.PORT || 8080;
+// const port = process.env.PORT;
 
-const staticUrl = process.env.NODE_ENV === 'production' ? '../' : '../dist/';
+// const staticUrl = process.env.NODE_ENV === 'production' ? '../' : '../dist/';
 
 app.use(compression());
-app.use(express.static(path.join(__dirname, staticUrl)));
+app.use(express.static(path.join(__dirname, '../dist/')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, `${staticUrl}index.html`));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-app.listen(port, (err) => {
+app.listen(process.env.PORT || 8080, (err) => {
   if (err) {
     console.log('error', err);
   } else {

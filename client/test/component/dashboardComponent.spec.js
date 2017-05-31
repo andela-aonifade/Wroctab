@@ -1,20 +1,36 @@
 // import expect from 'expect';
 // import React from 'react';
-// import { shallow } from 'enzyme';
+// import { Provider } from 'react-redux';
+// import { mount } from 'enzyme';
 // import Dashboard from '../../components/dashboard/Dashboard.jsx';
-//
-// describe('Dashboard via Enzyme', () => {
-//   /**
-//    * [setup description]
-//    * @param  {Boolean} isPrivate [description]
-//    * @return {[type]}            [description]
-//    */
-//   function setup() {
-//     return shallow(<Dashboard />);
-//   }
-//   xit('renders tab', () => {
+// import configureStore from '../../store/configureStore';
+
+// /**
+//  * setup function for the test cases
+//  *
+//  * @return {Object} - object of props, output and render
+// */
+// function setup() {
+//   const store = configureStore();
+//   const props = {
+//     documentDetails: {},
+//     publicDocuments: {},
+//     privateDocuments: {},
+//     roleDocuments: {},
+//     loadUserDocument: {},
+//     loadAllDocument: {},
+//     isAuthenticated: true,
+//     auth: {},
+//     iaAuthenticated: {},
+//     authenticate: {},
+//     router: {}
+//   };
+//   return mount(<Provider store={store}><Dashboard {...props}/></Provider>);
+// }
+
+// describe('Testing <Dashboard /> Component', () => {
+//   it('Renders document tabs', () => {
 //     const wrapper = setup();
-//     expect(wrapper.find('div').text()).toEqual('All Public Documents');
-//     expect(wrapper.find('div').text()).toEqual('Role Access Documents');
+//     expect(wrapper.find('li.tab')).to.have.length(3);
 //   });
 // });

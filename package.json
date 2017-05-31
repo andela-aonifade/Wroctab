@@ -4,8 +4,8 @@
   "description": "Wroctab is a full stack document management system for managing user documents",
   "main": "index.js",
   "scripts": {
-    "prestart": "babel-node bin/startMessage.js",
-    "start": "npm run postbuild",
+    "prestart": "babel-node bin/startMessage",
+    "start": "babel-node bin/distServer",
     "open:www": "babel-node bin/www",
     "start:dev": "npm-run-all --parallel open:www",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
@@ -26,7 +26,7 @@
     "build:html": "babel-node bin/buildHtml",
     "prebuild": "npm-run-all clean-dist build:html",
     "build": "babel-node bin/build",
-    "postbuild": "babel-node bin/distServer"
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -116,6 +116,7 @@
   },
   "devDependencies": {
     "babel-register": "^6.23.0",
+    "chai": "^3.5.0",
     "coveralls": "^2.12.0",
     "env2": "^2.1.1",
     "enzyme": "2.2.0",
@@ -139,6 +140,7 @@
     "sass-loader": "^6.0.3",
     "selenium-download": "^2.0.9",
     "selenium-standalone": "^6.1.0",
+    "sinon": "^2.3.1",
     "supertest": "^3.0.0"
   }
 }

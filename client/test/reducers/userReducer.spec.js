@@ -34,13 +34,13 @@ describe('User Reducer', () => {
       manageUsers: { allUsers: [], userDetails: false, authUser: [] }
     };
 
-    const action = actions.getUserSuccess('Subair Oyindamola');
+    const action = actions.getUserSuccess('Onifade Anuoluwapo');
 
     // act
     const newState = userReducer(initialState.manageUsers, action);
     // assert
     expect(newState.length).toEqual(1);
-    expect(newState[0].owner).toEqual('Subair Oyindamola');
+    expect(newState[0].owner).toEqual('Onifade Anuoluwapo');
     done();
   });
 

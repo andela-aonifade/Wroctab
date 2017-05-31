@@ -134,9 +134,10 @@ const mapStateToProps = (state) => {
   const currentState = state.manageDocuments;
   let roleDocuments = [];
   let privateDocuments = [];
-  const publicDocuments = currentState.documents.filter(
-      doc => doc.viewAccess === 'public');
-  if (state.auth.isAuthenticated && state.auth.user.data.roleId !== 1) {
+  const publicDocuments = currentState
+      .documents.filter(doc => doc.viewAccess === 'public');
+  if (state.auth.isAuthenticated
+    && state.auth.user.data.roleId !== 1) {
     roleDocuments = currentState.documents.filter(
             doc => doc.role === String(state.auth.user.data.roleId));
   } else if (state.auth.isAuthenticated
