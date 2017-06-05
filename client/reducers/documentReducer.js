@@ -5,7 +5,7 @@ import initialState from './initialState';
 /**
  * documents reducers
  * @param  {object} state=initialState initial state of the application
- * @param  {any} action                 dispatched action fron the action
+ * @param  {object} action                 dispatched action fron the action
  * @return {object}                   return current state of the application
  */
 export default function documentReducer(

@@ -36,8 +36,8 @@ PrivateDocumentList.propTypes = {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 function mapDispatchToProps(dispatch) {
   return {

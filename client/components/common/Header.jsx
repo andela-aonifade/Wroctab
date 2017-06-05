@@ -108,8 +108,8 @@ Header.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any} data
+ * @param {object} state
+ * @returns {object} auth state
  */
 function mapStateToProps(state) {
   let role;

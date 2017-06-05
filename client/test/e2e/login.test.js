@@ -3,7 +3,7 @@
 const config = require('../../../nightwatch.conf.js');
 
 module.exports = {
-  'Doc Management Title': function (browser) {
+  'Login Page Title': function (browser) {
     browser
       .url('http://localhost:8080/login')
       .waitForElementVisible('body')

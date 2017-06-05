@@ -66,15 +66,15 @@ class DashboardPage extends React.Component {
                   <div className="col s12">
                     <ul
                       className="tabs tab-demo-active" id="tab-transparent">
-                      <li className="tab col s3">
+                      <li className="tab col s4">
                       <a className="white-text waves-effect waves-light active"
                           href="#public">Public Documents</a>
                       </li>
-                      <li className="tab col s3">
+                      <li className="tab col s4">
                         <a className="white-text waves-effect waves-light"
                           href="#role">Role Access Documents</a>
                       </li>
-                      {this.state.isPrivate ? <li className="tab col s3">
+                      {this.state.isPrivate ? <li className="tab col s4">
                         <a className="white-text waves-effect waves-light"
                           href="#private">Private</a>
                       </li> : ''}
@@ -127,8 +127,8 @@ DashboardPage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} state
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageDocuments;

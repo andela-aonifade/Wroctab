@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import toastr from 'toastr';
 import TextInput from '../common/TextInput.jsx';
 import { login } from '../../actions/userActions';
-import { addFlashMessage } from '../../actions/flashMessages';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -36,16 +35,14 @@ class LoginForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     if (this.isFormValid()) {
-      this.setState({ errors: {}, isLoading: true });
+      this.setState({ errors: {} });
       this.props.login(this.state).then(
         () => {
           this.context.router.push('/');
           toastr.success('Logged in Successfully');
         }
       ).catch(() => {
-        this.props.addFlashMessage({
-          type: 'error',
-          text: 'Unable to login user, please try again' });
+        toastr.error('Unable to login user, please try again');
       });
     }
   }
@@ -112,11 +109,10 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   login: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(null, { login, addFlashMessage })(LoginForm);
+export default connect(null, { login })(LoginForm);

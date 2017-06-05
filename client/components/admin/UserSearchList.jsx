@@ -155,8 +155,8 @@ UserSearchList.propTypes = {
 /**
  *
  * dispatch role actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} dispatch to props object
  */
 function mapDispatchToProps(dispatch) {
   return {

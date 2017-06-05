@@ -35,12 +35,16 @@ export default {
       })
       .then(document => res.status(200).send(document))
       .catch(error => res.status(400).send({
-        error,
         message: 'Error retrieving documents'
       }));
   },
 
   retrieve(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Documents
       .findById(req.params.id, {
         include: [User],
@@ -60,6 +64,11 @@ export default {
   },
 
   findAllUserDocument(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Documents
     .findAll({
       where: {
@@ -91,6 +100,11 @@ export default {
   },
 
   update(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     Roles.findById(req.decoded.data.roleId)
     .then(() => {
       return Documents
@@ -122,6 +136,11 @@ export default {
   },
 
   destroy(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Documents
       .find({
         where: {

@@ -11,7 +11,6 @@ import CancelButton from '../common/CancelButton.jsx';
 class UpdateProfile extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       user: Object.assign({}, props.user),
       errors: {},
@@ -41,12 +40,12 @@ class UpdateProfile extends React.Component {
 
   updateUser(event) {
     event.preventDefault();
+    this.setState({ password: false });
     this.props.actions.updateUser(this.state.user, this.props.user.id)
-    .then(() => { toastr.success('Profile Updated Successfully'); })
+    .then(() => {
+      toastr.success('Profile Updated Successfully');
+    })
     .catch(() => {
-      this.props.addFlashMessage({
-        type: 'error',
-        text: 'Unable to update profile' });
       toastr.error('Unable to update profile');
     });
   }
@@ -103,7 +102,7 @@ class UpdateProfile extends React.Component {
             <div className="input-field">
               <SubmitButton type="submit" value="Save"
                 onClick={this.updateUser}/>
-              <CancelButton onClick={cancelClick} />
+              <CancelButton onClick={cancelClick}/>
             </div>
           </div>
         </form>
@@ -129,8 +128,8 @@ UpdateProfile.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object}
  */
 const mapStateToProps = (state) => {
   const isAuthenticated = state.auth.isAuthenticated;

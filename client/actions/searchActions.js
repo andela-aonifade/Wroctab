@@ -5,7 +5,7 @@ import types from './actionTypes';
 /**
  * searchUserSuccess method
  * @param  {object} users user reponse from api call
- * @return {object}      action type and action payload
+ * @return {object} action type and action payload
  */
 export function searchUsersSuccess(users) {
   return {
@@ -17,7 +17,7 @@ export function searchUsersSuccess(users) {
 /**
  * searchDocumentSuccess method
  * @param  {object} documents documents reponse from api call
- * @return {object}      action type and action payload
+ * @return {object} action type and action payload
  */
 export function searchDocumentsSuccess(documents) {
   return {
@@ -32,7 +32,7 @@ export function searchDocumentsSuccess(documents) {
  * @param  {String} term   search term
  * @param  {number} limit  limit of records to be returned
  * @param  {numebr} offset offset of user data
- * @return {object}        reponse from the api
+ * @return {object} reponse from the api
  */
 export function searchUsers(term, limit, offset) {
   return (dispatch) => {
@@ -50,7 +50,7 @@ export function searchUsers(term, limit, offset) {
  * @param  {String} term   search term
  * @param  {number} limit  limit of records to be returned
  * @param  {numebr} offset offset of document data
- * @return {object}        reponse from the api
+ * @return {object} reponse from the api
  */
 export function searchDocuments(term, limit, offset) {
   return (dispatch) => {

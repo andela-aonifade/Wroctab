@@ -4,8 +4,8 @@ import rootReducer from '../reducers';
 
 /**
  * Redux store configuration for production
- * @param  {[type]} initialState [description]
- * @return {[type]}              [description]
+ * @param  {object} initialState for the store
+ * @return {object} store object
  */
 export default function configureStore(initialState) {
   return createStore(

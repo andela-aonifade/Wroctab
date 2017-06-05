@@ -161,8 +161,8 @@ const mapStateToProps = (state) => {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 const mapDispatchToProps = (dispatch) => {
   return {

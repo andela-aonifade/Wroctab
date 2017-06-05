@@ -40,9 +40,10 @@ class ManangeRolePage extends React.Component {
           <div>
             <a onClick={this.closeClick}
               className="btn-floating teal closeModal">
-              <i className="material-icons">close</i></a>
+              <i className="material-icons">close</i>
+            </a>
           </div>
-          <h6 className="white-text">Update Role</h6>
+          <h3 className="white-text">Update Role</h3>
           <RoleForm />
         </div>
       );
@@ -101,8 +102,8 @@ ManangeRolePage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} roles and the state of current role
  */
 function mapStateToProps(state) {
   const currentState = state.manageRoles;
@@ -116,8 +117,8 @@ function mapStateToProps(state) {
 /**
  *
  * dispatch document actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} action
  */
 function mapDispatchToProps(dispatch) {
   return {

@@ -1,90 +1,87 @@
 import expect from 'expect';
+import moxios from 'moxios';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import * as documentActions from '../../../client/actions/documentActions';
 import types from '../../../client/actions/actionTypes';
 
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
 // Test a sync action
 describe('Document Actions', () => {
-  describe('createDocumentSuccess', () => {
-    it('should create a CREATE_DOCUMENT_SUCCESS action', (done) => {
-      // arrange
-      const document = {
-        title: 'test document',
-        body: 'This is just a test document. Please enjoy yourself',
-        access: 'public',
-        owner: 2
-      };
-      const expectedAction = {
-        type: types.CREATE_DOCUMENT_SUCCESS,
-        document
-      };
-      // act
-      const action = documentActions.createDocumentSuccess(document);
-      // assert
-      expect(action).toEqual(expectedAction);
-      done();
-    });
-  });
-  describe('loadDocumentSuccess', () => {
-    it('should get document when passed LOAD_DOCUMENT_SUCCESS', (done) => {
-      const documents = {
-        title: 'test document',
-        body: 'This is just a test document. Please enjoy yourself',
-        access: 'public',
-        owner: 2
-      };
-      const expectedAction = {
+  beforeEach(() => moxios.install());
+  afterEach(() => moxios.uninstall());
+
+  describe('Load User Document', () => {
+    it(`should return object and 
+        dispatch a LOAD_DOCUMENT_SUCCESS action`, () => {
+      moxios.stubRequest('/documents', {
+        status: 200,
+        response: { title: 'test document' }
+      });
+
+      const expectedActions = [{
         type: types.LOAD_DOCUMENT_SUCCESS,
-        documents
-      };
-
-      const action = documentActions.loadDocumentSuccess(documents);
-      // assert
-      expect(action).toEqual(expectedAction);
-      done();
+        documents: { title: 'test document' }
+      }];
+      const store = mockStore();
+      return store.dispatch(documentActions.loadAllDocument())
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
     });
   });
-  describe('setCurrentDocument', () => {
-    it(`should set the current document 
-        when passed SET_CURRENT_DOCUMENT`, (done) => {
-      const id = 12030349;
-      const expectedAction = {
-        type: types.SET_CURRENT_DOCUMENT,
-        id
-      };
+  describe('DeleteDocument', () => {
+    it('deletes a document and dispatches DELETE_DOCUMENT_SUCCESS', () => {
+      moxios.stubRequest('/documents/3', {
+        status: 200
+      });
 
-      const action = documentActions.setCurrentDocument(id);
-      // assert
-      expect(action).toEqual(expectedAction);
-      done();
+      const expectedActions = [];
+      const store = mockStore({ auth: { user: { data: { id: 3 } } } });
+
+      return store.dispatch(documentActions.deleteDocument(3))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
     });
   });
-  describe('displayCurrentDocument', () => {
-    it(`should display the current document 
-        when passed DISPLAY_SELECTED_DOCUMENT`, (done) => {
-      const id = 12030349;
-      const expectedAction = {
-        type: types.DISPLAY_SELECTED_DOCUMENT,
-        id
-      };
 
-      const action = documentActions.displayCurrentDocument(id);
-      // assert
-      expect(action).toEqual(expectedAction);
-      done();
+  describe('UpdateDocument', () => {
+    it('Updates a document and dispatches LOAD_DOCUMENT_SUCCESS', () => {
+      const document = { title: 'testing document' };
+      moxios.stubRequest('/documents/3', document, {
+        status: 200
+      });
+
+      const expectedActions = [];
+      const store = mockStore({ currentlySelected: { selectedDocument: 3 },
+        auth: { user: { data: { id: 3 } } } });
+
+      return store.dispatch(documentActions.updateDocument(3))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
     });
   });
-  describe('deleteCurrentDocument', () => {
-    it(`should delete the current document 
-        when passed DELETE_CURRENT_DOCUMENT`, (done) => {
-      const expectedAction = {
-        type: types.DELETE_CURRENT_DOCUMENT,
-      };
 
-      const action = documentActions.deleteCurrentDocument();
-      // assert
-      expect(action).toEqual(expectedAction);
-      done();
-    });
-  });
+  // describe('SaveDocument', () => {
+  //   it('Saves a document and dispatches LOAD_DOCUMENT_SUCCESS', () => {
+  //     const document = { title: 'testing document' };
+  //     moxios.stubRequest('/documents', document, {
+  //       status: 200
+  //     });
+
+  //     const expectedActions = [];
+  //     const store = mockStore({ currentlySelected: { selectedDocument: 3 },
+  //       auth: { user: { data: { id: 3 } } } });
+
+  //     return store.dispatch(documentActions.saveDocument(3))
+  //       .then(() => {
+  //         expect(store.getActions()).toEqual(expectedActions);
+  //       });
+  //   });
+  // });
 });
 

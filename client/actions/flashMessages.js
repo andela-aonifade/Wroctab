@@ -2,8 +2,8 @@ import types from './actionTypes';
 
 /**
  * @export
- * @param {any} message
- * @returns {any} message
+ * @param {string} message
+ * @returns {object} message and action type
  */
 export function addFlashMessage(message) {
   return {
@@ -14,8 +14,8 @@ export function addFlashMessage(message) {
 
 /**
  * @export
- * @param {any} id
- * @returns {any} id
+ * @param {intger} id
+ * @returns {object} id and object type
  */
 export function deleteFlashMessage(id) {
   return {

@@ -9,10 +9,6 @@ import SignupForm from './SignupForm.jsx';
  */
 class SignupPage extends React.Component {
 
-  /**
- * React Render
- * @return {object} html
- */
   render() {
     return (
       <div className="container">
@@ -35,8 +31,8 @@ SignupPage.propTypes = {
 /**
  *  map state to props
  *
- * @param {any} state
- * @returns {object}j
+ * @param {object} state
+ * @returns {object} user state
  */
 function mapStateToProps(state) {
   return { user: state.user };

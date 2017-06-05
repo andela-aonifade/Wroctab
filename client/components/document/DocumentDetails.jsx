@@ -18,36 +18,36 @@ class DocumentDetails extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col s8 offset-s3">
+          <div className="col s12">
             <div id="card-alert" className="card white">
-              <div className="card-content teal-text">
-                <a>
+              <div className="card-content black-text">
+                <p>
                 Author: {this.state.author}
-                </a>
+                </p>
               </div>
             </div>
 
             <div id="card-alert" className="card white">
-              <div className="card-content teal-text">
-                <a>
-                Title: {this.state.docTitle}
-                </a>
+              <div className="card-content black-text">
+                <p>
+                  Title: {this.state.docTitle}
+                </p>
               </div>
             </div>
 
             <div id="card-alert" className="card white">
-              <div className="card-content teal-text">
-                <a>
+              <div className="card-content black-text">
+                <p>
                 Content: {renderHTML(this.state.model)}
-                </a>
+                </p>
               </div>
             </div>
 
             <div id="card-alert" className="card white">
-              <div className="card-content teal-text">
-                <a>
+              <div className="card-content black-text">
+                <p>
                 Access: {this.state.select}
-                </a>
+                </p>
               </div>
             </div>
           </div>
@@ -67,9 +67,9 @@ DocumentDetails.propTypes = {
 /**
  *
  *
- * @param {any} documents
- * @param {any} id
- * @returns {any} object
+ * @param {object} documents
+ * @param {integer} id
+ * @returns {string | null} object string
  */
 const getDocumentById = (documents, id) => {
   const document = documents.filter((doc) => {
@@ -84,8 +84,8 @@ const getDocumentById = (documents, id) => {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object}
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageDocuments;

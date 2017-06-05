@@ -84,20 +84,20 @@ class RoleList extends React.Component {
             </a>
             <ul>
               <li onClick={this.editRole} className="editDoc">
-                <a
+                <button
                 className="btn-floating teal tooltipped"
                 data-position="bottom" data-delay="50"
                 data-tooltip="edit document">
                   <i id={role.id} className="material-icons">mode_edit</i>
-                </a>
+                </button>
               </li>
               <li onClick={this.renderAlert}>
-                <a className="btn-floating red accent-4 tooltipped"
+                <button className="btn-floating red accent-4 tooltipped"
                   data-position="bottom" data-delay="50"
                   data-tooltip="delete document"
                   >
                   <i id={role.id} className="material-icons">delete</i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -120,8 +120,8 @@ RoleList.propTypes = {
 /**
  *
  * dispatch role actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} all dispatch objects
  */
 function mapDispatchToProps(dispatch) {
   return {

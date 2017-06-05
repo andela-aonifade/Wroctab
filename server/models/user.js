@@ -44,6 +44,7 @@ export default (sequelize, DataTypes) => {
         Users.hasMany(models.Documents, {
           foreignKey: 'userId',
           as: 'documents',
+          onDelete: 'SET NULL'
         });
       }
     },
@@ -70,11 +71,12 @@ export default (sequelize, DataTypes) => {
     },
     hooks: {
       beforeCreate: (user) => {
-        return user.hashPassword();
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8));
+        return user.password;
       },
       beforeUpdate: (user) => {
         if(user._changed.password){
-          user.hashPassword();
+          user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8));
         }
       }
     }

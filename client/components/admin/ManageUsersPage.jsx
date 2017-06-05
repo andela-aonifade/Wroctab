@@ -78,7 +78,7 @@ class ManageUserPage extends React.Component {
       const { allRoles } = this.props;
       return (
         <div>
-          <h6>Update User Details</h6>
+          <h3 className="white-text">Update User Details</h3>
           <UserForm allRoles={allRoles}/>
         </div>
       );
@@ -135,17 +135,16 @@ class ManageUserPage extends React.Component {
                     </div>
                     {this.state.showResult ?
                       <div>
-                    <h6 id="searchResult" className="white-text">
+                      <h6 id="searchResult" className="white-text">
                       Result for "{this.state.value}" user </h6>
                       <UserSearchList
                         searchedUsers={searchedUsers}
                         searchedPageCount={searchedPageCount}
-                        value={this.state.value}
-                        />
+                        value={this.state.value} />
                     </div>
                     : <UserList allUsers={allUsers}
-                    pageCount = {pageCount}
-                     />}
+                    pageCount = {pageCount}/>
+                    }
                 </div>
                 <div className="col s12 m6">
                 {selectedUser && userDetails ? this.renderUserDetails() :
@@ -180,8 +179,8 @@ ManageUserPage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} all props
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageUsers;
@@ -204,8 +203,8 @@ const mapStateToProps = (state) => {
 /**
  *
  * dispatch document actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} all dispatch props
  */
 const mapDispatchToProps = (dispatch) => {
   return {

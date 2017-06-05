@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 import userProfilePic from '../home/images/user-gray.png';
 import ListDetails from '../common/ListDetails.jsx';
 import * as userActions from '../../actions/userActions';
 import ChangePassword from './ChangePassword.jsx';
 import UpdateProfile from './UpdateProfile.jsx';
 import { addFlashMessage } from '../../actions/flashMessages';
+
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -58,7 +60,7 @@ class ProfilePage extends React.Component {
                 fullname={user.name}
                 username={user.username}
                 email={user.email}
-                createdAt={user.createdAt}
+                createdAt={moment(user.createdAt).format('llll')}
                 showHeader
                 onEditClick={this.editProfileClick}
                 onChangeClick={this.changePasswordClick}
@@ -70,7 +72,7 @@ class ProfilePage extends React.Component {
               }
               {this.state.edit ?
                 <UpdateProfile user={user}
-                  cancelClick={this.cancelClick}/> : ''
+                  cancelClick={this.cancelClick} /> : ''
               }
               </div>
             </div>
@@ -92,8 +94,8 @@ ProfilePage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object}
  */
 const mapStateToProps = (state) => {
   const isAuthenticated = state.auth.isAuthenticated;

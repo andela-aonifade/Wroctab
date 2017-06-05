@@ -66,8 +66,8 @@ DocumentPage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object}
  */
 function mapStateToProps(state) {
   const currentState = state.manageDocuments;
@@ -91,8 +91,8 @@ function mapStateToProps(state) {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 function mapDispatchToProps(dispatch) {
   return {

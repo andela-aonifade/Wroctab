@@ -64,9 +64,6 @@ class UserForm extends React.Component {
     this.props.actions.saveUserAdmin(this.state.user).then(() => {
       toastr.success('User Added Successfully');
     }).catch(() => {
-      this.props.addFlashMessage({
-        type: 'error',
-        text: 'Unable to add new user' });
       toastr.error(
         'Unable to add new user');
     });
@@ -123,6 +120,7 @@ class UserForm extends React.Component {
               onChange={this.onChange}
               error={errors.name}/>
           </div>
+          {selectedUser ? '' :
           <div className="row margin">
             <TextInput
               type="text"
@@ -134,6 +132,8 @@ class UserForm extends React.Component {
               clearError={this.clearError}
               error={errors.username}/>
           </div>
+          }
+          {selectedUser ? '' :
           <div className="row margin">
             <TextInput
               type="email"
@@ -145,6 +145,7 @@ class UserForm extends React.Component {
               clearError={this.clearError}
               error={errors.email}/>
           </div>
+          }
           {selectedUser ? '' :
             <div className="row margin">
               <TextInput
@@ -161,8 +162,9 @@ class UserForm extends React.Component {
           <label>User Role</label>
           <div className="input-field col s12">
             <select name="roleId" id="mySelectBox"
-            value={this.state.select}
-            className="browser-default" onChange={this.onChange}>
+            value={this.state.select || 2}
+            className="browser-default"
+            onChange={this.onChange}>
             <option value="" disabled >User Role</option>
             {this.props.allRoles.map(role =>
                (<option key={role.id}
@@ -222,8 +224,8 @@ function getUserById(allusers, id) {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} user details
  */
 function mapStateToProps(state) {
   const currentState = state.manageUsers;
@@ -246,9 +248,9 @@ function mapStateToProps(state) {
 }
 
 /**
- * [mapDispatchToProps description]
- * @param  {fuction} dispatch [description]
- * @return {object}          [description]
+ *
+ * @param  {function} dispatch
+ * @return {object} action and flash messages
  */
 const mapDispatchToProps = (dispatch) => {
   return {

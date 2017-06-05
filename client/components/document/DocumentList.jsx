@@ -89,12 +89,13 @@ class DocumentList extends React.Component {
                     <i id={document.id} className="material-icons">mode_edit</i>
                   </a>
                 </li>
-                <li onClick={this.renderAlert}>
-                  <a className="btn-floating red accent-4 tooltipped"
+                <li>
+                  <button onClick={this.renderAlert}
+                    className="btn-floating red accent-4 tooltipped"
                     data-position="bottom" data-delay="50"
                     data-tooltip="delete document">
                     <i id={document.id} className="material-icons">delete</i>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -116,8 +117,8 @@ DocumentList.propTypes = {
 /**
  *
  * dispatch document actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 function mapDispatchToProps(dispatch) {
   return {

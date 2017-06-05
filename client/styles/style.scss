@@ -31,6 +31,18 @@ body {
   opacity: 0.9;
 }
 
+
+#panel-transparent{
+  background: rgba(255,255,255,0.8);
+  max-height: 200px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#panel-footer{
+  margin-bottom: 2px;
+}
+
 .overlay{
   background-size: cover; 
   height: 100vh;
@@ -123,7 +135,7 @@ body {
 }
 
 #tab-transparent{
-  background: rgba(54, 25, 25, 0);
+  background: rgba(0,128,128, 0);
 }
 
 .list-badge{

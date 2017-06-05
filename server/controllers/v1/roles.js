@@ -37,6 +37,11 @@ export default {
   },
 
   retrieve(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Roles
       .findById(req.params.id, {
         include: [{
@@ -59,6 +64,11 @@ export default {
   },
 
   update(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Roles
       .findById(req.params.id)
       .then((role) => {
@@ -87,6 +97,11 @@ export default {
   },
 
   destroy(req, res) {
+    if(isNaN(req.params.id)){
+      return res.status(404).send({
+        message: 'An integer parameter expected'
+      });
+    }
     return Roles
       .findById(req.params.id)
       .then((role) => {

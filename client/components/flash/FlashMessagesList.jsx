@@ -24,7 +24,7 @@ FlashMessagesList.propTypes = {
 /**
  *
  *
- * @param {any} state
+ * @param {object} state
  * @returns {object} message
  */
 function mapStateToProps(state) {

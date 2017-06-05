@@ -13,11 +13,9 @@ const adminAccess = auth.adminAccess;
 // const userAccess = auth.userAccess;
 
 const Routes = (app) => {
-  /**
-   * crud api for roles model
-   */
   app
     .route('/roles')
+
     .post(verify, adminAccess, rolesController.create)
     .get(verify, adminAccess, rolesController.list);
   app
