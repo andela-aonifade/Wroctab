@@ -22,8 +22,10 @@ class App extends React.Component {
     return (
       <div>
         <Header/>
-        <FlashMessagesList />
-        {this.props.children}
+        <div className="overlay">
+          <FlashMessagesList />
+          {this.props.children}
+        </div>
       </div>
     );
   }

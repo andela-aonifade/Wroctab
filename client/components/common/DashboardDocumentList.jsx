@@ -1,26 +1,28 @@
 import React, { PropTypes } from 'react';
-import CardOptionButton from './CardOptionButton.jsx';
+import officeImg from '../home/images/office.jpg';
 
 const DashboardDocumentList = ({ onClick, documents }) => {
   return (
-    <div>
-
+    <div className= "row">
       {documents
-        .map(document => <div id="card-alert" className="card white"
-        key={document.id}>
-          <div className="card-content teal-text">
-            <a className="pointer" id={document.id}
-              onClick={onClick}>
-            Title: {document.title}
-            <span className="badge list-badge">
-              Author: {document.User.name}</span>
-
-            </a>
+        .map(document => <div key={document.id}
+          className = "col s12 m4">
+          <div className="card z-depth-5" >
+            <div className="card-image waves-effect waves-block waves-light">
+              <img className="activator" src={officeImg} />
+            </div>
+            <div className="card-content" >
+              <span className="card-title activator grey-text text-darken-4">
+                <a className="pointer" id={document.id}
+                onClick={onClick}> {document.title} </a>
+                <i className="material-icons right"
+                onClick={onClick} id={document.id}>visibility</i>
+              </span>
+              <p><a href="#">Author: {document.User.name}</a></p>
+            </div>
           </div>
-          <div className="fixed-action-btn horizontal edit">
-            <CardOptionButton onClick={onClick} id={document.id} />
-          </div>
-        </div>)}
+        </div>
+        )}
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { Router, browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import configureStore from './store/configureStore';
 import routes from './routes';
-import './styles/style.scss'; // Webpack can import CSS files too!
+import './styles/style.scss';
 import '../node_modules/materialize-css/dist/js/materialize.min';
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import '../node_modules/material-icons/css/material-icons.css';

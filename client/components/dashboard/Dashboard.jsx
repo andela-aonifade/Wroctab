@@ -59,13 +59,13 @@ class DashboardPage extends React.Component {
     return (
       <div className="row">
         <div className="col s12">
-          <div id="dashboardBG" className="col s12 z-depth-5 card-panel">
-            <h4>DASHBOARD</h4>
-              <div className="container">
+          <div id="dashboardBG" className="col s12">
+            <h4 className="white-text header-text center">DASHBOARD</h4>
+              <div>
                 <div className="row">
                   <div className="col s12">
                     <ul
-                      className="tabs tab-demo-active z-depth-1 teal darken-3">
+                      className="tabs tab-demo-active" id="tab-transparent">
                       <li className="tab col s3">
                       <a className="white-text waves-effect waves-light active"
                           href="#public">Public Documents</a>
@@ -82,20 +82,17 @@ class DashboardPage extends React.Component {
                   </div>
                   <div className="col s12">
                     <Modal documentDetails={this.props.documentDetails} />
-                    <div id="public" className="col s12 tab-style">
-                      <h6>All Public Documents</h6>
+                    <div id="public" className="col s12">
                       <PublicDocumentList
                         publicDocuments={publicDocuments} />
 
                     </div>
-                    <div id="role" className="col s12 tab-style">
-                      <h6>All Accessible Role Documents</h6>
+                    <div id="role" className="col s12">
                       <RoleDocumentList roleDocuments={roleDocuments} />
 
                     </div>
                     {this.state.isPrivate ?
-                      <div id="private" className="col s12 tab-style">
-                        <h6>All Private Documents</h6>
+                      <div id="private" className="col s12">
                       <PrivateDocumentList privateDocuments={privateDocuments}/>
 
                     </div> : ''}

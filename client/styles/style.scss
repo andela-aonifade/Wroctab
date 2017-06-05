@@ -1,8 +1,65 @@
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f1f4fa;
+    background:url(https://source.unsplash.com/random/) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
+.header-text{
+  padding: 10px;
+  color: white;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+#signIn-box {
+  opacity: 0.9;
+}
+
+.overlay{
+  background-size: cover; 
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  background-attachment: fixed;
+  overflow: scroll;
+}
+
+#transparent90{
+  opacity: 0.9;
+}
+
+#transparent80{
+  opacity: 0.8;
+}
+
+.main {
+  text-align: center;
+}
+
+.content {
+  padding-top: 50%;
+  transform: translate(0, -50%);
+  text-shadow:
+  -1px -1px 1px black,
+  1px -1px 1px black,
+  -1px 1px 1px black,
+  1px 1px 1px black;
+}
 .navheader {
     padding: 0px 0px 0px 5px;
 }
@@ -17,7 +74,7 @@ body {
 }
 
 #modal2 {
-    width: 95% !important;
+    width: 85% !important;
     max-height: 100%;
 }
 
@@ -45,6 +102,10 @@ body {
 
 #logincontainer{
   margin: 75px 0px 0px 0px ;
+  opacity: 50%;
+}
+.transparent75{
+  opacity: 75%;
 }
 
 #dashboardBG{
@@ -57,8 +118,12 @@ body {
   overflow-y: scroll;
 }
 
-.tab-style{
-  border: 1px solid #eceff1;
+.maintab{
+  max-width:80% !important;
+}
+
+#tab-transparent{
+  background: rgba(54, 25, 25, 0);
 }
 
 .list-badge{
@@ -120,6 +185,10 @@ body {
 .pagination li a {
   cursor: pointer;
   color: #999;
+}
+
+.center{
+  margin: auto;
 }
 
 .user-details{

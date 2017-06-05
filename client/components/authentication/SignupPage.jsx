@@ -17,8 +17,7 @@ class SignupPage extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s6 offset-s3">
-            <span className="flow-text center-align">Create an Account</span>
+          <div className="col s12 m8 offset-m2" id="signIn-box">
             <SignupForm saveUser={this.props.actions.saveUser}
             isUserExists={this.props.actions.isUserExists}
             />

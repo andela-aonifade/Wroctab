@@ -5,7 +5,7 @@ const NotFound = () =>
 <div className="wrap">
    <div className="logo">
    <h1>404</h1>
-    <p>Error occured! - File not Found</p>
+    <p>Error occured! - Page not Found</p>
         <div className="sub">
         <p><Link to="/">
           Back to Dashboard

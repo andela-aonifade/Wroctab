@@ -94,21 +94,20 @@ class ManageUserPage extends React.Component {
       <div>
         <div className="row">
           <div className="col s12">
-            <div className="col s12 z-depth-5 card-panel card-body">
+            <div className="col s12">
               <div className="fixed-action-btn">
                 <a onClick={this.addUser}
-      className="btn-floating btn-large waves-effect waves-light red tooltipped"
-        data-position="left" data-delay="50"
-        data-tooltip="create new role"
-        >
+    className="btn-floating btn-large waves-effect waves-light teal tooltipped"
+    data-position="left" data-delay="50"
+    data-tooltip="create new role">
                   <i className="material-icons">add</i>
                 </a>
               </div>
-              <h4>All Users</h4>
+              <h4 className="white-text header-text center">All Users</h4>
             <div className="row">
-                <div className="col s6">
+                <div className="col s12 m6">
                   <div className="row">
-                      <form className="col s12">
+                      <form className="col s12 m12">
                         <div className="row">
                           <div className="input-field col s12">
                             <i className="material-icons prefix">search</i>
@@ -119,8 +118,9 @@ class ManageUserPage extends React.Component {
                               className="validate"
                               onChange={this.onChange}
                                />
-                             <label htmlFor="icon_prefix">
-                               search with username or email</label>
+                             <label htmlFor="icon_prefix"
+                              className="white-text">
+                              search with username or email</label>
                           </div>
                           {this.state.search ?
                             <input type="submit" value="Clear"
@@ -135,7 +135,7 @@ class ManageUserPage extends React.Component {
                     </div>
                     {this.state.showResult ?
                       <div>
-                    <h6 id="searchResult">
+                    <h6 id="searchResult" className="white-text">
                       Result for "{this.state.value}" user </h6>
                       <UserSearchList
                         searchedUsers={searchedUsers}
@@ -147,14 +147,13 @@ class ManageUserPage extends React.Component {
                     pageCount = {pageCount}
                      />}
                 </div>
-                <div className="col s6">
+                <div className="col s12 m6">
                 {selectedUser && userDetails ? this.renderUserDetails() :
                   this.state.viewForm ? <div>
-                    <h6>Add New User</h6>
+                    <h6 className="white-text">User Information</h6>
                     <UserForm allRoles={allRoles}/>
                   </div> : this.renderUserForm()
                 }
-
                 </div>
             </div>
           </div>

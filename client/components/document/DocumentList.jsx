@@ -57,7 +57,6 @@ class DocumentList extends React.Component {
   render() {
     return (
       <div>
-
         {this
           .props
           .myDocuments
@@ -73,8 +72,6 @@ class DocumentList extends React.Component {
               <span className="badge list-badge">
                 Access: {document.viewAccess}</span>
               </a>
-
-
             </div>
             <div className="fixed-action-btn horizontal click-to-toggle edit">
               <a className="btn-floating teal tooltipped"
@@ -93,10 +90,9 @@ class DocumentList extends React.Component {
                   </a>
                 </li>
                 <li onClick={this.renderAlert}>
-                  <a className="btn-floating red darken-1 tooltipped"
+                  <a className="btn-floating red accent-4 tooltipped"
                     data-position="bottom" data-delay="50"
-                    data-tooltip="delete document"
-                    >
+                    data-tooltip="delete document">
                     <i id={document.id} className="material-icons">delete</i>
                   </a>
                 </li>

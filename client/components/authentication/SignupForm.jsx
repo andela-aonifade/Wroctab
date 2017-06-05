@@ -92,6 +92,7 @@ class SignupForm extends React.Component {
     const { errors } = this.state;
     const form = (
       <div className="col s12 z-depth-5 card-panel">
+        <h4 className="center">Create an Account</h4>
         <form className="login-form">
           <div className="row margin">
             <TextInput
