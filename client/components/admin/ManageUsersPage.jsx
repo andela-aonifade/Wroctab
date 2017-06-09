@@ -97,7 +97,7 @@ class ManageUserPage extends React.Component {
             <div className="col s12">
               <div className="fixed-action-btn">
                 <a onClick={this.addUser}
-    className="btn-floating btn-large waves-effect waves-light teal tooltipped"
+    className="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"
     data-position="left" data-delay="50"
     data-tooltip="create new role">
                   <i className="material-icons">add</i>
@@ -124,10 +124,10 @@ class ManageUserPage extends React.Component {
                           </div>
                           {this.state.search ?
                             <input type="submit" value="Clear"
-                  className="btn waves-effect waves-light teal darken-1 right"
+                  className="btn waves-effect waves-light blue-grey darken-1 right"
                   onClick={this.clearSearchResult}
                           /> : <input type="submit" value="Search"
-                className="btn waves-effect waves-light teal darken-1 right"
+                className="btn waves-effect waves-light blue-grey darken-1 right"
                 onClick={this.searchUserClick}/>
               }
                         </div>

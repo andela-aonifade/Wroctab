@@ -168,7 +168,7 @@ class DocumentForm extends React.Component {
               id="btnSave"
               type="submit"
               value="Save"
-              className="btn waves-effect waves-light teal darken-1"
+              className="btn waves-effect waves-light blue-grey darken-1"
               onClick={isValue ? this.updateDocument : this.saveDocument}/>
 
             </div>

@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import util from 'util';
-import bcrypt from 'bcryptjs';
 
 import model from '../../models/';
 import Helpers from '../../helper/Helper';
@@ -41,8 +40,7 @@ export default {
           })
           .catch(error => res.status(400).send({
             message: `Error creating ${req.body.name}` }));
-      })
-      .catch(error => res.status(500).send({}));
+      });
   },
 
   list(req, res) {
@@ -66,14 +64,14 @@ export default {
         };
         const result = Helpers.getPaginatedItems(user, offset, limit);
         return res.status(200).send({
-          user: result, pageMeta: meta });
+          user: result, pagination: meta });
       })
       .catch(error => res.status(400).send({
         message: 'Error retrieving users' }));
   },
 
   retrieve(req, res) {
-    if(isNaN(req.params.id)){
+    if (req.params.id && isNaN(req.params.id)) {
       return res.status(400).send({
         message: 'Only integer id expected'
       });
@@ -100,9 +98,9 @@ export default {
   },
 
   update(req, res) {
-    if(isNaN(req.params.id)){
-      return res.status(404).send({
-        message: 'An integer parameter expected'
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error updating user'
       });
     }
     Roles.findById(req.decoded.data.roleId)
@@ -138,11 +136,10 @@ export default {
     });
   },
 
-  destroy(req, res) 
-  {
-    if(isNaN(req.params.id)){
-      return res.status(404).send({
-        message: 'An integer parameter expected'
+  destroy(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error deleting user'
       });
     }
     Roles.findById(req.decoded.data.roleId)
@@ -176,6 +173,10 @@ export default {
   },
 
   findUserDocuments(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      res.status(400)
+        .send({ message: 'Error occurred while retrieving user document' });
+    }
     return User
       .findById(req.params.id, {
         include: [

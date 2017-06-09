@@ -1,5 +1,6 @@
 /* eslint class-methods-use-this: "off"*/
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import RoleList from './RoleList.jsx';
@@ -8,6 +9,7 @@ import RoleForm from './RoleForm.jsx';
 
 class ManangeRolePage extends React.Component {
   constructor(props) {
+    console.log('I am here');
     super(props);
 
     this.state = { viewForm: false };
@@ -39,7 +41,7 @@ class ManangeRolePage extends React.Component {
         <div>
           <div>
             <a onClick={this.closeClick}
-              className="btn-floating teal closeModal">
+              className="btn-floating blue-grey closeModal">
               <i className="material-icons">close</i>
             </a>
           </div>
@@ -59,7 +61,7 @@ class ManangeRolePage extends React.Component {
             <div className="col s12">
               <div className="fixed-action-btn" onClick={this.openFormClick}>
                 <a className="btn-floating
-                  btn-large waves-effect waves-light teal tooltipped"
+                  btn-large waves-effect waves-light blue-grey tooltipped"
                   data-position="left" data-delay="50"
                   data-tooltip="create new role">
                   <i className="material-icons">add</i>
@@ -75,7 +77,7 @@ class ManangeRolePage extends React.Component {
                     <div>
                       <div>
                         <a onClick={this.closeClick}
-                          className="btn-floating teal closeModal">
+                          className="btn-floating blue-grey closeModal">
                           <i className="material-icons">close</i></a>
                       </div>
                       <h6 className="white-text">Add New Role</h6>
@@ -127,3 +129,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManangeRolePage);
+
+export {
+  ManangeRolePage as ManangeRole
+};

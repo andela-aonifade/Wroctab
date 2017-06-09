@@ -6,34 +6,6 @@ import currentlySelectedReducer from
 '../../../client/reducers/currentlySelectedReducers';
 
 describe('Document Reducer', () => {
-  it('should add documents to states when passed LOAD_DOCUMENT_SUCCESS',
-  (done) => {
-    const initialState = {
-      manageDocuments: { documents: [] }
-    };
-    // arrange
-    const document = [{
-      title: 'test reducer document',
-      docContent: 'testreduce content',
-      userId: 2,
-      role: 'private',
-    }, {
-      title: 'test document on load success',
-      docContent: 'document contents',
-      userId: 1,
-      role: 'private',
-    }];
-
-    const action = actions.loadDocumentSuccess(document);
-
-    // act
-    const newState = documentReducer(initialState.manageDocuments, action);
-    // assert
-    expect(newState.documents.length).toEqual(2);
-    expect(newState.documents[0].title).toEqual('test reducer document');
-    done();
-  });
-
   it('should add new document to state when passed CREATE_DOCUMENT_SUCCESS',
   (done) => {
     const initialState = {

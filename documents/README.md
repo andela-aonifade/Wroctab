@@ -369,7 +369,7 @@ GET /api/users/:identifier                          |Find user with email or use
       "updatedAt": "2017-06-02T22:05:44.757Z"
     }
   ],
-  "pageMeta": {
+  "pagination": {
     "limit": 10,
     "next": "?limit=10&offset=10",
     "offset": 0,

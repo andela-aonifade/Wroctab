@@ -92,15 +92,19 @@ export function loadUserDocument() {
  * @export
  * @returns {object|error} documents or error
  */
-export function loadAllDocument() {
+export function loadAllDocument(limit, offset) {
+  limit = limit || 12;
+  offset = offset || 0;
   return (dispatch) => {
-    return axios.get('/documents').then((res) => {
-      dispatch(loadDocumentSuccess(res.data));
-    }).catch((error) => {
-      throw error;
-    });
+    return axios
+      .get(`/documents?limit=${limit}&offset=${offset}`).then((res) => {
+        dispatch(loadDocumentSuccess(res.data));
+      }).catch((error) => {
+        throw error;
+      });
   };
 }
+
 
 /**
  * save new documents to database using POST api route /documents/

@@ -1,6 +1,7 @@
 /* eslint class-methods-use-this: "off"*/
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import ReactPaginate from 'react-paginate';
 import { loadUserDocument,
   loadAllDocument } from '../../actions/documentActions';
 import PublicDocumentList from '../document/PublicDocumentList.jsx';
@@ -17,8 +18,11 @@ class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPrivate: false
+      isPrivate: false,
+      offset: 0,
+      limit: 12
     };
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   componentWillMount() {
@@ -41,7 +45,6 @@ class DashboardPage extends React.Component {
       }
     }
   }
-
   componentDidMount() {
     $('.modal').modal();
     $('select').material_select();
@@ -50,6 +53,16 @@ class DashboardPage extends React.Component {
     $('ul.tabs').tabs();
     $('ul.tabs').tabs('select_tab', 'public');
   }
+
+  handlePageClick(data) {
+    const selected = data.selected;
+    const offset = Math.ceil(selected * this.state.limit);
+
+    this.setState({ offset }, () => {
+      this.props.loadAllDocument(this.state.limit, offset);
+    });
+  }
+
   /**
  * React Render
  * @return {object} html
@@ -99,6 +112,20 @@ class DashboardPage extends React.Component {
                   </div>
                 </div>
               </div>
+              <div>
+                <ReactPaginate previousLabel={'previous'}
+                            nextLabel={'next'}
+                            breakLabel={<a href="">...</a>}
+                            breakClassName={'break-me'}
+                            pageCount={this.props.pageCount || 2}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={this.handlePageClick}
+                            containerClassName={'pagination'}
+                            subContainerClassName={'pages pagination'}
+                            pageClassName={'waves-effect'}
+                            activeClassName={'active'} />
+              </div>
           </div>
         </div>
       </div>
@@ -120,7 +147,8 @@ DashboardPage.propTypes = {
   auth: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   authenticate: PropTypes.object.isRequired,
-  documentDetails: PropTypes.bool.isRequired
+  documentDetails: PropTypes.bool.isRequired,
+  pageCount: PropTypes.number
 };
 
 
@@ -132,6 +160,7 @@ DashboardPage.propTypes = {
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageDocuments;
+  const pageCount = state.manageDocuments.pageCount;
   let roleDocuments = [];
   let privateDocuments = [];
   const publicDocuments = currentState
@@ -156,7 +185,8 @@ const mapStateToProps = (state) => {
     roleDocuments,
     privateDocuments,
     authenticate: state.auth,
-    documentDetails: currentState.documentDetails
+    documentDetails: currentState.documentDetails,
+    pageCount
   };
 };
 

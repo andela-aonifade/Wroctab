@@ -63,7 +63,7 @@ describe('User Reducer', () => {
       password: 'password',
       roleId: 2
     }],
-      pageMeta: {
+      pagination: {
         limit: 1,
         offset: 0,
         total_count: 2

@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const CardOptionButton = ({ id, onClick }) => {
   return (
     <div>
-      <a className="btn-floating btn-flat teal"
+      <a className="btn-floating btn-flat blue-grey"
         onClick={onClick}>
         <i id={id} className="material-icons">view_list</i>
       </a>

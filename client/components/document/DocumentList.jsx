@@ -39,7 +39,51 @@ class DocumentList extends React.Component {
     });
     this.setState({ id: 0 });
   }
-
+  showDocumentList() {
+    return (
+    <div>
+    {
+    this
+    .props
+    .myDocuments
+    .map(document => <div id="panel-transparent"
+    className="card blue-grey" key={document.id}>
+      <div className="card-content white-text">
+        Title: {document.title}
+        <span className="badge list-badge">
+          Access: {document.viewAccess}</span>
+      </div>
+      <div className="fixed-action-btn horizontal click-to-toggle edit">
+        <a className="btn-floating blue-grey tooltipped"
+          data-position="top" data-delay="50"
+          data-tooltip="click to view more"
+          >
+          <i className="material-icons">more_vert</i>
+        </a>
+        <ul>
+          <li onClick={this.editDocument} className="editDoc">
+            <a href="#modal1"
+            className="btn-floating blue-grey tooltipped"
+            data-position="bottom" data-delay="50"
+            data-tooltip="edit document">
+              <i id={document.id} className="material-icons">mode_edit</i>
+            </a>
+          </li>
+          <li>
+            <button onClick={this.renderAlert}
+              className="btn-floating red accent-4 tooltipped"
+              data-position="bottom" data-delay="50"
+              data-tooltip="delete document">
+              <i id={document.id} className="material-icons">delete</i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>)}
+    <ReduxSweetAlert />
+    </div>
+    );
+  }
   renderAlert(event) {
     event.preventDefault();
     let id = this.state.id;
@@ -57,50 +101,9 @@ class DocumentList extends React.Component {
   render() {
     return (
       <div>
-        {this
-          .props
-          .myDocuments
-          .map(document => <div id="card-alert" className="card white"
-          key={document.id}>
-            <div className="card-content teal-text">
-              <a className="pointer tooltipped"
-                data-position="bottom" data-delay="50"
-                data-tooltip="click on me to view"
-                href="#modal1" id={document.id}
-                onClick={this.editDocument}>
-              Title: {document.title}
-              <span className="badge list-badge">
-                Access: {document.viewAccess}</span>
-              </a>
-            </div>
-            <div className="fixed-action-btn horizontal click-to-toggle edit">
-              <a className="btn-floating teal tooltipped"
-                data-position="top" data-delay="50"
-                data-tooltip="click to view more"
-                >
-                <i className="material-icons">more_vert</i>
-              </a>
-              <ul>
-                <li onClick={this.editDocument} className="editDoc">
-                  <a href="#modal1"
-                  className="btn-floating teal tooltipped"
-                  data-position="bottom" data-delay="50"
-                  data-tooltip="edit document">
-                    <i id={document.id} className="material-icons">mode_edit</i>
-                  </a>
-                </li>
-                <li>
-                  <button onClick={this.renderAlert}
-                    className="btn-floating red accent-4 tooltipped"
-                    data-position="bottom" data-delay="50"
-                    data-tooltip="delete document">
-                    <i id={document.id} className="material-icons">delete</i>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>)}
-          <ReduxSweetAlert />
+        { this.props.myDocuments.length < 1 ?
+          <div className="white-text"> You do not have any document yet</div> :
+          this.showDocumentList()}
       </div>
     );
   }

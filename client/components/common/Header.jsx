@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/userActions';
 import SearchModal from '../search/SearchModal.jsx';
 
-class Header extends React.Component {
+export class Header extends React.Component {
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
@@ -74,7 +74,7 @@ class Header extends React.Component {
     );
     return (
       <div>
-      <nav className="teal darken-3 navbar-fixed">
+      <nav className="darken-3 navbar-fixed nav-transparent">
         <div className="nav-wrapper">
           <div className="navheader">
             <Link to="/" className="brand-logo header-text black-color">

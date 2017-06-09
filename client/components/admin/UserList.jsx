@@ -6,7 +6,7 @@ import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert';
 import ReactPaginate from 'react-paginate';
 import * as userActions from '../../actions/userActions';
 
-class UserList extends React.Component {
+export class UserList extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -89,13 +89,14 @@ class UserList extends React.Component {
       {this
         .props
         .allUsers
-        .map(user => <div id="card-alert" className="card"
+        .map(user => <div className="card blue-grey z-depth-5  darken-1"
+            id="panel-transparent"
         key={user.id}>
-          <div className="card-content teal-text transparent80">
+          <div className="card-content white-text transparent80" id="name">
             {user.name} - {user.email}
           </div>
           <div className="fixed-action-btn horizontal click-to-toggle edit">
-            <a className="btn-floating teal tooltipped"
+            <a className="btn-floating blue-grey tooltipped"
               data-position="top" data-delay="50"
               data-tooltip="click to view more"
               >
@@ -104,15 +105,15 @@ class UserList extends React.Component {
             <ul>
             <li onClick={this.viewUser} className="editDoc">
               <button
-              className="btn-floating teal tooltipped"
+              className="btn-floating blue-grey tooltipped"
               data-position="bottom" data-delay="50"
               data-tooltip="edit document">
                 <i id={user.id} className="material-icons">view_list</i>
               </button>
             </li>
-              <li onClick={this.editUser} className="editDoc">
+              <li onClick={this.editUser} className="editDoc" id="icons">
                 <button
-                className="btn-floating teal tooltipped"
+                className="btn-floating blue-grey tooltipped"
                 data-position="bottom" data-delay="50"
                 data-tooltip="edit document">
                   <i id={user.id} className="material-icons">mode_edit</i>

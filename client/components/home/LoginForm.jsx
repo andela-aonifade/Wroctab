@@ -5,14 +5,15 @@ import toastr from 'toastr';
 import TextInput from '../common/TextInput.jsx';
 import { login } from '../../actions/userActions';
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       user: {},
       errors: {},
-      isLoading: false
+      isLoading: false,
+      loginError: ''
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this
@@ -56,8 +57,10 @@ class LoginForm extends React.Component {
 
   render() {
     const { errors, isLoading } = this.state;
+    // const { login } = this.props;
     const form = (
-      <div id="logincontainer" className="col s12 z-depth-5 card-panel">
+      <div id="logincontainer panel-transparent"
+        className="col s12 z-depth-5 card blue-grey">
         <form className="login-form">
           <h4 className="center">Login</h4>
           <div className="row margin">
@@ -80,12 +83,12 @@ class LoginForm extends React.Component {
               error={errors.password}
               />
           </div>
-          <div className="row">
+          <div className="row center">
             <div className="input-field col s12">
               <input
                 type="submit"
                 value="Login"
-                className="btn waves-effect waves-light col s12 teal darken-1"
+                className="btn blue-grey darken-1 btn-login"
                 disabled={isLoading}
                 onClick={this.onSubmit}/>
             </div>

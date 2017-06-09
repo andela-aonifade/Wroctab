@@ -47,5 +47,6 @@ Object.keys(document.defaultView).forEach((property) => {
 global.navigator = {
   userAgent: 'node.js'
 };
+global.$ = () => ({ tooltip: () => {} });
 
 documentRef = document;  // eslint-disable-line no-undef

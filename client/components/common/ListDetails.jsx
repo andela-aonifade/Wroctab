@@ -6,7 +6,7 @@ const ListDetails = ({
   fullname, username, email, createdAt, showHeader, onEditClick, onChangeClick
 }) => {
   return (
-    <div>
+    <div className="card blue-grey" id="panel-transparent">
       <ul id = "profile-page-about-details"
       className = "collection z-depth-1" >
       {showHeader ?

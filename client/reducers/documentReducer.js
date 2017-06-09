@@ -12,7 +12,12 @@ export default function documentReducer(
   state = initialState.manageDocuments, action) {
   switch (action.type) {
   case types.LOAD_DOCUMENT_SUCCESS:
-    return Object.assign({}, ...state, { documents: action.documents });
+    return Object.assign({}, ...state,
+      {
+        documents: action.documents.document,
+        pageCount: Math.ceil(action.documents.pagination.total_count /
+          action.documents.pagination.limit)
+      });
 
   case types.CREATE_DOCUMENT_SUCCESS:
     return [

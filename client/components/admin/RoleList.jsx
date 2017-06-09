@@ -7,7 +7,7 @@ import * as roleActions from '../../actions/roleActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 
-class RoleList extends React.Component {
+export class RoleList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -70,19 +70,19 @@ class RoleList extends React.Component {
       {this
         .props
         .allRoles
-        .map(role => <div id="card-alert" className="card white"
+        .map(role => <div id="panel-transparent" className="card blue-grey"
         key={role.id}>
-          <div className="card-content teal-text">
+          <div className="card-content white-text" id="title">
             {role.title}
           </div>
           <div className="fixed-action-btn horizontal click-to-toggle edit">
-            <a className="btn-floating teal tooltipped"
+            <a className="btn-floating blue-grey tooltipped"
               data-position="top" data-delay="50"
               data-tooltip="click to view more"
               >
               <i className="material-icons">more_vert</i>
             </a>
-            <ul>
+            <ul id="icons">
               <li onClick={this.editRole} className="editDoc">
                 <button
                 className="btn-floating teal tooltipped"

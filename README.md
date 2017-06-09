@@ -4,15 +4,6 @@
 # Woctab - Document Management System
 Wroctab is a full stack document management system that helps to manage documents given the different accessibility. Wroctab contains a backend API developed with Node, Express and Sequelize. A frontend developed with React using Redux architecture.
 
-## Development
-This application was developed using the following frameworks.
-
-*   [NodeJs](https://nodejs.org)
-*   [React Redux](http://redux.js.org/docs/basics/UsageWithReact.html)
-*   [Webpack](https://webpack.js.org/)
-*   [express](https://expressjs.com/)
-*   [Sequelize](https://sequelizejs.org) as [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping)
-
 ## Application Features
 ###### User Authentication
 Users are authenticated and validated using JWT web token. Generating tokens on signup and login ensures documents and API endpoints are protected.
@@ -39,6 +30,15 @@ Users are authenticated and validated using JWT web token. Generating tokens on 
     -   View all created roles.
     -   Search for any user.
 
+## Development
+This application was developed using the following frameworks.
+
+*   [NodeJs](https://nodejs.org)
+*   [React Redux](http://redux.js.org/docs/basics/UsageWithReact.html)
+*   [Webpack](https://webpack.js.org/)
+*   [express](https://expressjs.com/)
+*   [Sequelize](https://sequelizejs.org) as [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping)
+
 ## Installation
 -   Ensure that you have NodeJs and Postgres installed on your machine
 -   Clone the repository `$ git clone https://github.com/andela-aonifade/wroctab.git`
@@ -60,6 +60,7 @@ Users are authenticated and validated using JWT web token. Generating tokens on 
 
 ## API Documentation
 -----
+[API Docs](https://andela-aonifade.github.io/apidoc/)
 The API has routes, each dedicated to a single task that uses HTTP response codes to indicate API status and errors.
 #### API Features
 
@@ -372,7 +373,7 @@ GET /api/users/:identifier                          |Find user with email or use
       "updatedAt": "2017-06-02T22:05:44.757Z"
     }
   ],
-  "pageMeta": {
+  "pagination": {
     "limit": 10,
     "next": "?limit=10&offset=10",
     "offset": 0,

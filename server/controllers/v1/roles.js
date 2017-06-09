@@ -37,9 +37,9 @@ export default {
   },
 
   retrieve(req, res) {
-    if(isNaN(req.params.id)){
-      return res.status(404).send({
-        message: 'An integer parameter expected'
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error occured while retrieving role'
       });
     }
     return Roles
@@ -64,9 +64,9 @@ export default {
   },
 
   update(req, res) {
-    if(isNaN(req.params.id)){
-      return res.status(404).send({
-        message: 'An integer parameter expected'
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error updating role'
       });
     }
     return Roles
@@ -97,9 +97,9 @@ export default {
   },
 
   destroy(req, res) {
-    if(isNaN(req.params.id)){
-      return res.status(404).send({
-        message: 'An integer parameter expected'
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error deleting Role.'
       });
     }
     return Roles

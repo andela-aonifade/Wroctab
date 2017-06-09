@@ -6,7 +6,7 @@ import TextInput from '../common/TextInput.jsx';
 import * as userActions from '../../actions/userActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
-class UserForm extends React.Component {
+export class UserForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -108,7 +108,8 @@ class UserForm extends React.Component {
     const hasValue = this.props.selectedUser;
 
     const form = (
-      <div className="col s12 m12 z-depth-5 card-panel transparent80">
+      <div className="col s12 m12 z-depth-5 card blue-grey"
+        id="panel-transparent">
         <form className="login-form">
           <div className="row margin">
             <TextInput

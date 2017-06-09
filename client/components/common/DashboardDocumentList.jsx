@@ -1,18 +1,21 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 const DashboardDocumentList = ({ onClick, documents }) => {
   return (
     <div className= "row">
       {documents
         .map(document => <div key={document.id}
-          className = "col s12 m3">
-          <div className="card-panel z-depth-5" id="panel-transparent">
-            <div className="card-content black-text" >
+          className = "col s12 m4">
+          <div className="card blue-grey z-depth-5  darken-1"
+            id="panel-transparent">
+            <div className="card-content white-text" id="title" >
               <span className="card-title">
-                 DOCUMENT TITLE
+                DOCUMENT INFO
               </span>
               <hr />
-              <p>{document.title}</p>
+              <p>{document.title}<br />
+              {moment(document.createdAt).format('llll')}</p>
             </div>
             <div className="card-action" id="panel-footer">
               <a href="#"><i className="material-icons right"

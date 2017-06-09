@@ -23,9 +23,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="overlay">
         <Header/>
-        <div className="overlay">
+        <div>
           <FlashMessagesList />
           {this.props.children}
         </div>

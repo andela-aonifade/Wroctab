@@ -70,7 +70,7 @@ class SearchModal extends React.Component {
         <div id="modal2" className="modal">
         <div>
           <a href="#"
-            className="btn-floating teal closeModal modal-close">
+            className="btn-floating blue-grey closeModal modal-close">
             <i className="material-icons">close</i></a>
         </div>
           <div className="modal-content">
@@ -91,7 +91,7 @@ class SearchModal extends React.Component {
                     <input
                       type="submit"
                       value="Search"
-                      className="btn waves-effect waves-light teal darken-1"
+                      className="btn blue-grey darken-1 btn-search"
                       onClick={this.searchDocumentsClick}/>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ class SearchModal extends React.Component {
                     {this.props.searchedDocuments.map(document =>
                       <div id="card-alert" className="card white"
                       key={document.id}>
-                        <div className="card-content teal-text">
+                        <div className="card-content white-text">
                           <a className="pointer" id={document.id}
                             onClick={this.renderModal}>
                           Title: {document.title}
