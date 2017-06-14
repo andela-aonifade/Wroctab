@@ -5,7 +5,7 @@ const SubmitButton = ({ type, value, onClick }) => {
     <input
       type={type}
       value={value}
-      className="btn waves-effect waves-light teal darken-1"
+      className="btn waves-effect waves-light blue-grey darken-1"
       onClick={onClick}/>
   );
 };

@@ -102,16 +102,5 @@ describe('Search API', () => {
           done();
         });
     });
-
-    xit('Should return error for non-admin search', (done) => {
-      server
-        .get('/search/documents/?term=in')
-        .set({ 'x-access-token': regularDetails.token })
-        .end((err, res) => {
-          expect(res.body.message)
-          .toEqual('User is unauthorized for this request.');
-          done();
-        });
-    });
   });
 });

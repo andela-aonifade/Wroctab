@@ -35,11 +35,11 @@ class DocumentPage extends React.Component {
       <div className="row">
           <div id="documentPage" className="col s12">
             <h4 className="header-text center">MY DOCUMENTS</h4>
-        <div id="addBtnDiv"
+        <div
           className="fixed-action-btn" onClick={this.deleteClick}>
           <a
-  className="btn-floating btn-large waves-effect waves-light teal tooltipped"
-  data-position="left" data-delay="50"
+  className="btn-floating btn-large blue-grey tooltipped btn-add"
+  data-position="left" data-delay="50" id="addBtnDiv"
   data-tooltip="create new document">
             <i className="material-icons">add</i>
           </a>
@@ -66,8 +66,8 @@ DocumentPage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object}
  */
 function mapStateToProps(state) {
   const currentState = state.manageDocuments;
@@ -91,8 +91,8 @@ function mapStateToProps(state) {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 function mapDispatchToProps(dispatch) {
   return {

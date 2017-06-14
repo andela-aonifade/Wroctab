@@ -141,7 +141,7 @@ class DocumentForm extends React.Component {
               className="validate"
               onChange={this.onChange}/>
             <label id="labeltitle"
-              htmlFor="title" className="active">Title</label>
+              htmlFor="title" className="active">Document Title</label>
           </div>
           <div className="input-field col s12">
             <FroalaEditor
@@ -154,11 +154,12 @@ class DocumentForm extends React.Component {
             <select name="viewAccess" id="mySelectBox"
             value={this.state.select}
             className="browser-default">
-            <option value="" disabled >Restrict Document Access</option>
-              <option value="public">Public</option>
+              <option value="public" selected>Public</option>
               <option value="private">Private</option>
               <option value="role">Role</option>
           </select>
+          <label id="labeltitle"
+              htmlFor="title" className="active">Select Access Type</label>
           </div>
           <div className={classnames('input-field col s12', {
             hide: showSaveBtn === false
@@ -167,7 +168,7 @@ class DocumentForm extends React.Component {
               id="btnSave"
               type="submit"
               value="Save"
-              className="btn waves-effect waves-light teal darken-1"
+              className="btn waves-effect waves-light blue-grey darken-1"
               onClick={isValue ? this.updateDocument : this.saveDocument}/>
 
             </div>
@@ -196,9 +197,9 @@ DocumentForm.propTypes = {
 /**
  *
  *
- * @param {any} documents
- * @param {any} id
- * @returns {any} object
+ * @param {object} documents
+ * @param {integer} id
+ * @returns {object} object
  */
 const getDocumentById = (documents, id) => {
   const document = documents.filter((doc) => {
@@ -213,8 +214,8 @@ const getDocumentById = (documents, id) => {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} object of all states mapped to props
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageDocuments;
@@ -240,8 +241,8 @@ const mapStateToProps = (state) => {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 const mapDispatchToProps = (dispatch) => {
   return {

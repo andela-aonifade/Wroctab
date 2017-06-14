@@ -136,11 +136,11 @@ class SignupForm extends React.Component {
               error={errors.password}/>
           </div>
           <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 center">
               <input
                 type="submit"
                 value="Sign Up"
-                className="btn waves-effect waves-light col s12 teal darken-1"
+                className="btn blue-grey darken-1 btn-signup"
                 onClick={this.saveUser}/>
             </div>
             <div className="input-field col s12">

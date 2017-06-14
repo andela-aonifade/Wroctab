@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="document.test"
+    errors="0" failures="0" hostname="" id="" package="document.test" skipped="1"
+    tests="1" time="0.000" timestamp="Fri, 09 Jun 2017 16:25:22 GMT">
+  
+  
+    
+    <testcase
+      name="My Documents Page" classname="document.test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

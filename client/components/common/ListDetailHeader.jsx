@@ -4,7 +4,7 @@ import SubmitButton from './SubmitButton.jsx';
 const ListDetailHeader = ({ onEditClick, onChangeClick }) => {
   return (
     <div>
-      <li className="collection-header teal darken-3 white-text">
+      <li className="collection-header blue-grey darken-3 white-text">
         <div className="row">
           <div className="col s5 ">
             <p>
@@ -19,8 +19,7 @@ const ListDetailHeader = ({ onEditClick, onChangeClick }) => {
             </p>
           </div>
         </div>
-
-                </li>
+      </li>
     </div>
   );
 };

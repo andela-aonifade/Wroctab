@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import toastr from 'toastr';
 import TextInput from '../common/TextInput.jsx';
 import { login } from '../../actions/userActions';
-import { addFlashMessage } from '../../actions/flashMessages';
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       user: {},
       errors: {},
-      isLoading: false
+      isLoading: false,
+      loginError: ''
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this
@@ -36,16 +36,14 @@ class LoginForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     if (this.isFormValid()) {
-      this.setState({ errors: {}, isLoading: true });
+      this.setState({ errors: {} });
       this.props.login(this.state).then(
         () => {
           this.context.router.push('/');
           toastr.success('Logged in Successfully');
         }
       ).catch(() => {
-        this.props.addFlashMessage({
-          type: 'error',
-          text: 'Unable to login user, please try again' });
+        toastr.error('Unable to login user, please try again');
       });
     }
   }
@@ -59,8 +57,10 @@ class LoginForm extends React.Component {
 
   render() {
     const { errors, isLoading } = this.state;
+    // const { login } = this.props;
     const form = (
-      <div id="logincontainer" className="col s12 z-depth-5 card-panel">
+      <div id="logincontainer panel-transparent"
+        className="col s12 z-depth-5 card blue-grey">
         <form className="login-form">
           <h4 className="center">Login</h4>
           <div className="row margin">
@@ -83,12 +83,12 @@ class LoginForm extends React.Component {
               error={errors.password}
               />
           </div>
-          <div className="row">
+          <div className="row center">
             <div className="input-field col s12">
               <input
                 type="submit"
                 value="Login"
-                className="btn waves-effect waves-light col s12 teal darken-1"
+                className="btn blue-grey darken-1 btn-login"
                 disabled={isLoading}
                 onClick={this.onSubmit}/>
             </div>
@@ -112,11 +112,10 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   login: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default connect(null, { login, addFlashMessage })(LoginForm);
+export default connect(null, { login })(LoginForm);

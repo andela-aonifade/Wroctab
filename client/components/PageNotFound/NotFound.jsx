@@ -3,15 +3,15 @@ import { Link } from 'react-router';
 
 const NotFound = () =>
 <div className="wrap">
-   <div className="logo">
-   <h1>404</h1>
-    <p>Error occured! - Page not Found</p>
+    <div className="logo">
+        <h1>404</h1>
+            <p>Error occured! - Page not Found</p>
         <div className="sub">
-        <p><Link to="/">
-          Back to Dashboard
-          </Link></p>
-      </div>
-      </div>
+            <p><Link to="/">
+            Back to Dashboard
+            </Link></p>
+        </div>
+    </div>
 </div>;
 
 export default NotFound;

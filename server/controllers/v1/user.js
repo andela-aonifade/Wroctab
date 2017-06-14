@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import util from 'util';
-import bcrypt from 'bcryptjs';
 
 import model from '../../models/';
 import Helpers from '../../helper/Helper';
@@ -40,18 +39,13 @@ export default {
               newUser, message: 'User created successfully', token });
           })
           .catch(error => res.status(400).send({
-            error, message: `Error creating ${req.body.name}` }));
+            message: `Error creating ${req.body.name}` }));
       });
   },
 
   list(req, res) {
-    let limit = req.query.limit, offset = req.query.offset;
-    if (limit === 'undefined') {
-      limit = 10;
-    }
-    if (offset === 'undefined') {
-      offset = 0;
-    }
+    const limit = req.query.limit || 10;
+    const offset = req.query.offset || 0;
     const nextOffset = offset + limit;
     const previousOffset = (offset - limit < 1) ? 0 : offset - limit;
     return User
@@ -70,13 +64,18 @@ export default {
         };
         const result = Helpers.getPaginatedItems(user, offset, limit);
         return res.status(200).send({
-          user: result, pageMeta: meta });
+          user: result, pagination: meta });
       })
       .catch(error => res.status(400).send({
-        error, message: 'Error retrieving users' }));
+        message: 'Error retrieving users' }));
   },
 
   retrieve(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Only integer id expected'
+      });
+    }
     return User
       .findById(req.params.id, {
         include: [
@@ -99,6 +98,11 @@ export default {
   },
 
   update(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error updating user'
+      });
+    }
     Roles.findById(req.decoded.data.roleId)
     .then(() => {
       if (Helpers.isAdmin(req, res)
@@ -110,15 +114,12 @@ export default {
               if (!user) {
                 return res.status(404).send({ message: 'User Not Found' });
               }
-              const password = req.body.password ?
-              bcrypt.hashSync(req.body.password,
-                bcrypt.genSaltSync(10)) : null;
               return user
               .update({
                 name: req.body.name || user.name,
                 username: req.body.username || user.username,
                 email: req.body.email || user.email,
-                password: password || user.password,
+                password: req.body.password || user.password,
                 roleId: req.body.roleId || user.roleId
               })
                 .then(updatedUser => res
@@ -136,6 +137,11 @@ export default {
   },
 
   destroy(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error deleting user'
+      });
+    }
     Roles.findById(req.decoded.data.roleId)
     .then(() => {
       if (Helpers.isAdmin(req, res) || Helpers.isOwner(req, res)) {
@@ -148,6 +154,10 @@ export default {
           .then((user) => {
             if (!user) {
               return res.status(404).send({ message: 'User Not Found' });
+            }
+            if (user.username === 'superadmin') {
+              return res.status(403)
+                .send({ message: 'You cannot delete the super admin' });
             }
             return user
               .destroy()
@@ -163,6 +173,10 @@ export default {
   },
 
   findUserDocuments(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      res.status(400)
+        .send({ message: 'Error occurred while retrieving user document' });
+    }
     return User
       .findById(req.params.id, {
         include: [

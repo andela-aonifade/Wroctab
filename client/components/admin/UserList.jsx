@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert';
 import ReactPaginate from 'react-paginate';
-import { addFlashMessage } from '../../actions/flashMessages';
 import * as userActions from '../../actions/userActions';
 
-class UserList extends React.Component {
+export class UserList extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -24,7 +23,6 @@ class UserList extends React.Component {
     this.updateSelectState = this.updateSelectState.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
-
   componentDidMount() {
     $('select').material_select();
     $('#mySelectBox').on('change', this.updateSelectState);
@@ -56,11 +54,7 @@ class UserList extends React.Component {
     this.props.actions.deleteUser(userId)
     .then(() => toastr.success('User Successfully Deleted'))
     .catch(() => {
-      this.props.addFlashMessage({
-        type: 'error',
-        text: 'Unable to delete user' });
-      toastr.error(
-        'Unable to delete user');
+      toastr.error('Unable to delete user');
     });
     this.setState({ id: 0 });
   }
@@ -75,7 +69,7 @@ class UserList extends React.Component {
   }
 
   renderAlert(event) {
-    e.ventpreventDefault();
+    event.preventDefault();
     let id = this.state.id;
     id = event.target.id;
     this.setState({ show: true, id });
@@ -95,13 +89,14 @@ class UserList extends React.Component {
       {this
         .props
         .allUsers
-        .map(user => <div id="card-alert" className="card"
+        .map(user => <div className="card blue-grey z-depth-5  darken-1"
+            id="panel-transparent"
         key={user.id}>
-          <div className="card-content teal-text transparent80">
+          <div className="card-content white-text transparent80" id="name">
             {user.name} - {user.email}
           </div>
           <div className="fixed-action-btn horizontal click-to-toggle edit">
-            <a className="btn-floating teal tooltipped"
+            <a className="btn-floating blue-grey tooltipped"
               data-position="top" data-delay="50"
               data-tooltip="click to view more"
               >
@@ -109,27 +104,27 @@ class UserList extends React.Component {
             </a>
             <ul>
             <li onClick={this.viewUser} className="editDoc">
-              <a
-              className="btn-floating teal tooltipped"
+              <button
+              className="btn-floating blue-grey tooltipped"
               data-position="bottom" data-delay="50"
               data-tooltip="edit document">
                 <i id={user.id} className="material-icons">view_list</i>
-              </a>
+              </button>
             </li>
-              <li onClick={this.editUser} className="editDoc">
-                <a
-                className="btn-floating teal tooltipped"
+              <li onClick={this.editUser} className="editDoc" id="icons">
+                <button
+                className="btn-floating blue-grey tooltipped"
                 data-position="bottom" data-delay="50"
                 data-tooltip="edit document">
                   <i id={user.id} className="material-icons">mode_edit</i>
-                </a>
+                </button>
               </li>
               <li onClick={this.renderAlert}>
-                <a className="btn-floating red accent-4 tooltipped"
+                <button className="btn-floating red accent-4 tooltipped"
                   data-position="bottom" data-delay="50"
                   data-tooltip="delete document">
                   <i id={user.id} className="material-icons">delete</i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -160,7 +155,9 @@ class UserList extends React.Component {
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
-            Select number of users to be displayed
+            <span className="white-text">
+              Select number of users to be displayed
+            </span>
           </div>
         </div>
       </div>
@@ -173,22 +170,20 @@ UserList.propTypes = {
   allUsers: PropTypes.array.isRequired,
   swal: PropTypes.func.isRequired,
   close: PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired,
   pageCount: PropTypes.number
 };
 
 /**
  *
  * dispatch role actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} dispatch to props object
  */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(userActions, dispatch),
     swal: bindActionCreators(swal, dispatch),
     close: bindActionCreators(close, dispatch),
-    addFlashMessage: bindActionCreators(addFlashMessage, dispatch)
   };
 }
 

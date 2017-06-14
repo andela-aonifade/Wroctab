@@ -1,3 +1,4 @@
+import util from 'util';
 import model from '../../models/';
 import Helpers from '../../helper/Helper';
 
@@ -26,21 +27,39 @@ export default {
   },
 
   list(req, res) {
+    const offset = req.query.offset || 0;
+    const limit = req.query.limit || 12;
+    const nextOffset = offset + limit;
+    const previousOffset = (offset - limit < 1) ? 0 : offset - limit;
     return Documents
       .findAll({
-        offset: req.query.offset || 0,
-        limit: req.query.limit || 20,
         include: [User],
-        order: [['updatedAt', 'DESC']]
+        order: [['createdAt', 'DESC']]
       })
-      .then(document => res.status(200).send(document))
-      .catch(error => res.status(400).send({
-        error,
-        message: 'Error retrieving documents'
-      }));
+      .then((document) => {
+        const meta = {
+          limit,
+          next: util.format('?limit=%s&offset=%s', limit, nextOffset),
+          offset,
+          previous: util.format(
+            '?limit=%s&offset=%s', limit, previousOffset),
+          total_count: document.length
+        };
+        const result = Helpers.getPaginatedItems(document, offset, limit);
+        return res.status(200).send({
+          document: result,
+          pagination: meta
+        });
+      })
+      .catch(error => res.status(400).send(error));
   },
 
   retrieve(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error occurred while retrieving documents'
+      });
+    }
     return Documents
       .findById(req.params.id, {
         include: [User],
@@ -60,6 +79,11 @@ export default {
   },
 
   findAllUserDocument(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error occurred while retrieving user document'
+      });
+    }
     return Documents
     .findAll({
       where: {
@@ -91,6 +115,11 @@ export default {
   },
 
   update(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error updating document'
+      });
+    }
     Roles.findById(req.decoded.data.roleId)
     .then(() => {
       return Documents
@@ -122,6 +151,11 @@ export default {
   },
 
   destroy(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error deleting document'
+      });
+    }
     return Documents
       .find({
         where: {

@@ -37,6 +37,11 @@ export default {
   },
 
   retrieve(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error occured while retrieving role'
+      });
+    }
     return Roles
       .findById(req.params.id, {
         include: [{
@@ -59,6 +64,11 @@ export default {
   },
 
   update(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error updating role'
+      });
+    }
     return Roles
       .findById(req.params.id)
       .then((role) => {
@@ -87,6 +97,11 @@ export default {
   },
 
   destroy(req, res) {
+    if (req.params.id && isNaN(req.params.id)) {
+      return res.status(400).send({
+        message: 'Error deleting Role.'
+      });
+    }
     return Roles
       .findById(req.params.id)
       .then((role) => {

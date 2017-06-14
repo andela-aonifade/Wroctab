@@ -13,14 +13,14 @@ export default function searchReducer(
   case types.SEARCH_ALLUSERS_SUCCESS:
     return Object.assign({}, state, {
       searchedUsers: action.users.user,
-      searchedPageCount: Math.ceil(action.users.pageMeta.total_count /
-           action.users.pageMeta.limit) });
+      searchedPageCount: Math.ceil(action.users.pagination.total_count /
+           action.users.pagination.limit) });
 
   case types.SEARCH_ALLDOCUMENTS_SUCCESS:
     return Object.assign({}, state, {
       searchedDocuments: action.documents.document,
-      searchedPageCount: Math.ceil(action.documents.pageMeta.total_count /
-           action.documents.pageMeta.limit) });
+      searchedPageCount: Math.ceil(action.documents.pagination.total_count /
+           action.documents.pagination.limit) });
   default:
     return state;
   }

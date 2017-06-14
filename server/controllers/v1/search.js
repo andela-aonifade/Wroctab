@@ -49,7 +49,7 @@ export default {
         };
         const result = Helpers.getPaginatedItems(user, offset, limit);
         return res.status(200).send({
-          user: result, pageMeta: meta });
+          user: result, pagination: meta });
       })
     .catch(error => res.status(400).send({
       error,
@@ -94,7 +94,7 @@ export default {
         };
         const result = Helpers.getPaginatedItems(document, offset, limit);
         return res.status(200)
-          .send({ document: result, pageMeta: meta });
+          .send({ document: result, pagination: meta });
       })
       .catch(error => res.status(400)
         .send({

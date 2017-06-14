@@ -25,7 +25,7 @@ export default (sequelize, DataTypes) => {
         });
         Documents.hasMany(models.Shared, {
           foreignKey: 'documentId',
-          as: 'documents'
+          as: 'documents',
         });
       }
     }

@@ -6,8 +6,10 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 /**
  * loadUserSuccess,
  * action dispatched on getting a user records from db
+ *
+ * @export
  * @param  {object} users user response fron api call in the thunk
- * @return {object}      reponse dispatched to reducer
+ * @return {object} reponse dispatched to reducer
  */
 export function loadUserSuccess(users) {
   return {
@@ -19,6 +21,8 @@ export function loadUserSuccess(users) {
 /**
  * loadAllUsersSuccess
  * action dispatched on getting all users records from db
+ *
+ * @export
  * @param  {object} users user response fron api call in the thunk
  * @return {object}      reponse dispatched to reducer
  */
@@ -33,8 +37,8 @@ export function loadAllUsersSuccess(users) {
  * setCurrentUser
  *
  * @export
- * @param {any} user selected user data
- * @returns {any} data
+ * @param {object} user selected user data
+ * @returns {object} user and action type
  */
 export function setCurrentUser(user) {
   return {
@@ -46,9 +50,10 @@ export function setCurrentUser(user) {
 /**
  *
  * add to state the currently selected user
+ *
  * @export
- * @param {any} id
- * @returns {any} user id
+ * @param {integer} id
+ * @returns {object} user id and action type
  */
 export function setSelectedUser(id) {
   return {
@@ -59,7 +64,9 @@ export function setSelectedUser(id) {
 
 /**
  * display details of current user
- * @param {number} id selected user id
+ *
+ * @export
+ * @param {integer} id selected user id
  * @return {object} object of action
  */
 export function displaySelectedUser(id) {
@@ -71,7 +78,9 @@ export function displaySelectedUser(id) {
 
 /**
  * remove from state the currently selected user
- * @return {object} action [description]
+ *
+ * @export
+ * @return {object} action type
  */
 export function deleteSelectedUser() {
   return {
@@ -83,7 +92,7 @@ export function deleteSelectedUser() {
  * action dispatched on creating new user success
  *
  * @export
- * @param {any} user
+ * @param {object} user
  * @returns {Object} json object
  */
 export function createUserSuccess(user) {
@@ -94,8 +103,8 @@ export function createUserSuccess(user) {
  *  action dispatched on creating new user failure
  *
  * @export
- * @param {any} name
- * @returns {Object} json object
+ * @param {string} name
+ * @returns {Object} name and action type
  */
 export function getUserSuccess(name) {
   return { type: types.GET_USERS_SUCCESS, name };
@@ -103,8 +112,10 @@ export function getUserSuccess(name) {
 
 /**
  * update user success
+ *
+ * @export
  * @param  {object} user updated user new details
- * @return {object}
+ * @return {object} user updated detail and action type
  */
 export function updateUserSuccess(user) {
   return {
@@ -118,7 +129,7 @@ export function updateUserSuccess(user) {
  *  login users action dispatch on success authentication
  *
  * @export
- * @param {any} token
+ * @param {string} token
  * @returns {Object} json object
  */
 export function loginUserSuccess(token) {
@@ -133,8 +144,10 @@ export function loginUserSuccess(token) {
 
 /**
  * get authenticated user details
+ *
+ * @export
  * @param  {object} user
- * @return {object}
+ * @return {object} user and action type
  */
 export function getAuthUserSuccess(user) {
   return {
@@ -148,7 +161,7 @@ export function getAuthUserSuccess(user) {
  *  dispatch on login failure
  *
  * @export
- * @returns {Object} json object
+ * @returns {Object} action type
  */
 export function loginUserFailure() {
   return {
@@ -160,9 +173,9 @@ export function loginUserFailure() {
  * create new user using api route
  * POST /users/
  *
- * @export saveUser
+ * @export
  * @param {object} user
- * @returns {Object} api response
+ * @returns {Object} user detail and action type
  */
 export function saveUser(user) {
   return (dispatch) => {
@@ -182,9 +195,11 @@ export function saveUser(user) {
 /**
  * load users from the database using api route setting limit and offset
  * GET /users/?limit=%offset=
- * @param  {number} limit  [description]
- * @param  {number} offset [description]
- * @return {object}        [description]
+ *
+ * @export
+ * @param  {number} limit
+ * @param  {number} offset
+ * @return {object} response object and action type
  */
 export function loadUsers(limit, offset) {
   return (dispatch) => {
@@ -197,7 +212,9 @@ export function loadUsers(limit, offset) {
 /**
  * load users from the database using api route setting limit and offset
  * GET /users/
- * @return {object} [all users]
+ *
+ * @export
+ * @return {object} all users
  */
 export function loadAllUsers() {
   return (dispatch) => {
@@ -211,8 +228,10 @@ export function loadAllUsers() {
 /**
  * get currently authenticated user using parameter user id
  * GET /users/:id
- * @param  {number} id
- * @return {object}
+ *
+ * @export
+ * @param  {integer} id
+ * @return {object} response object and action type
  */
 export function getAuthUser(id) {
   return (dispatch) => {
@@ -225,9 +244,11 @@ export function getAuthUser(id) {
 /**
  * user update with admin authentication
  * PUT /users/:id
+ *
+ * @export
  * @param  {object} user [user data object to update]
- * @param  {number} id   user id
- * @return {object}      [api response]
+ * @param  {integer} id   user id
+ * @return {object} response object
  */
 export function updateUserAdmin(user, id) {
   return (dispatch) => {
@@ -240,9 +261,10 @@ export function updateUserAdmin(user, id) {
 /**
  * user update by account owner
  * GET /users/:id
+ * @export
  * @param  {object} user [user data object to update]
- * @param  {number} id   user id
- * @return {object}      [api response]
+ * @param  {integer} id   user id
+ * @return {object} response object
  */
 export function updateUser(user, id) {
   return (dispatch) => {
@@ -253,12 +275,12 @@ export function updateUser(user, id) {
 }
 
 /**
- *
  *create a new user by admin
  *POST /users/
+ *
  * @export saveUser
- * @param {any} user
- * @returns {Object} json object
+ * @param {object} user
+ * @returns {Object} response object
  */
 export function saveUserAdmin(user) {
   return (dispatch) => {
@@ -274,7 +296,7 @@ export function saveUserAdmin(user) {
  * GET /users/:id
  *
  * @export getUser
- * @param {any} id
+ * @param {integer} id
  * @returns {Object} json object
  */
 export function getUser(id) {
@@ -290,7 +312,7 @@ export function getUser(id) {
  *
  *
  * @export getUser
- * @param {any} id
+ * @param {integer} id
  * @returns {Object} json object
  */
 export function deleteUser(id) {
@@ -307,8 +329,8 @@ export function deleteUser(id) {
  * using the route GET /api/users/:identifier
  *
  * @export
- * @param {any} identifier
- * @returns {objeect} uuser
+ * @param {object} identifier
+ * @returns {object} user
  */
 export function isUserExists(identifier) {
   return () => {
@@ -322,8 +344,8 @@ export function isUserExists(identifier) {
  * and set headers for authorization
  *
  * @export
- * @param {any} user
- * @returns {any} data
+ * @param {object} user
+ * @returns {object} response data
  */
 export function login(user) {
   return (dispatch) => {
@@ -341,7 +363,7 @@ export function login(user) {
  *
  * logout user and clear token from localStorage
  * @export
- * @returns {any} data
+ * @returns {object} data
  */
 export function logout() {
   return (dispatch) => {

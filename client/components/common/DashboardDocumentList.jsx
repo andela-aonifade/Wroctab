@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import officeImg from '../home/images/office.jpg';
+import moment from 'moment';
 
 const DashboardDocumentList = ({ onClick, documents }) => {
   return (
@@ -7,18 +7,20 @@ const DashboardDocumentList = ({ onClick, documents }) => {
       {documents
         .map(document => <div key={document.id}
           className = "col s12 m4">
-          <div className="card z-depth-5" >
-            <div className="card-image waves-effect waves-block waves-light">
-              <img className="activator" src={officeImg} />
-            </div>
-            <div className="card-content" >
-              <span className="card-title activator grey-text text-darken-4">
-                <a className="pointer" id={document.id}
-                onClick={onClick}> {document.title} </a>
-                <i className="material-icons right"
-                onClick={onClick} id={document.id}>visibility</i>
+          <div className="card blue-grey z-depth-5  darken-1"
+            id="panel-transparent">
+            <div className="card-content white-text" id="title" >
+              <span className="card-title">
+                DOCUMENT INFO
               </span>
-              <p><a href="#">Author: {document.User.name}</a></p>
+              <hr />
+              <p>{document.title}<br />
+              {moment(document.createdAt).format('llll')}</p>
+            </div>
+            <div className="card-action" id="panel-footer">
+              <a href="#"><i className="material-icons right"
+              onClick={onClick} id={document.id}>visibility</i></a>
+              <a href="#">By: <em>{document.User.name}</em></a>
             </div>
           </div>
         </div>

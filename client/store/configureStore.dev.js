@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
  *
  *
  * @export
- * @param {any} initialState
+ * @param {object} initialState
  * @returns {object} store object
  */
 export default function configureStore(initialState) {

@@ -1,5 +1,6 @@
 /* eslint class-methods-use-this: "off"*/
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import RoleList from './RoleList.jsx';
@@ -8,6 +9,7 @@ import RoleForm from './RoleForm.jsx';
 
 class ManangeRolePage extends React.Component {
   constructor(props) {
+    console.log('I am here');
     super(props);
 
     this.state = { viewForm: false };
@@ -39,10 +41,11 @@ class ManangeRolePage extends React.Component {
         <div>
           <div>
             <a onClick={this.closeClick}
-              className="btn-floating teal closeModal">
-              <i className="material-icons">close</i></a>
+              className="btn-floating blue-grey closeModal">
+              <i className="material-icons">close</i>
+            </a>
           </div>
-          <h6 className="white-text">Update Role</h6>
+          <h3 className="white-text">Update Role</h3>
           <RoleForm />
         </div>
       );
@@ -57,10 +60,10 @@ class ManangeRolePage extends React.Component {
           <div className="col s12">
             <div className="col s12">
               <div className="fixed-action-btn" onClick={this.openFormClick}>
-                <a
-      className="btn-floating btn-large waves-effect waves-light teal tooltipped"
-        data-position="left" data-delay="50"
-        data-tooltip="create new role">
+                <a className="btn-floating
+                  btn-large waves-effect waves-light blue-grey tooltipped"
+                  data-position="left" data-delay="50"
+                  data-tooltip="create new role">
                   <i className="material-icons">add</i>
                 </a>
               </div>
@@ -74,7 +77,7 @@ class ManangeRolePage extends React.Component {
                     <div>
                       <div>
                         <a onClick={this.closeClick}
-                          className="btn-floating teal closeModal">
+                          className="btn-floating blue-grey closeModal">
                           <i className="material-icons">close</i></a>
                       </div>
                       <h6 className="white-text">Add New Role</h6>
@@ -101,8 +104,8 @@ ManangeRolePage.propTypes = {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} roles and the state of current role
  */
 function mapStateToProps(state) {
   const currentState = state.manageRoles;
@@ -116,8 +119,8 @@ function mapStateToProps(state) {
 /**
  *
  * dispatch document actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} action
  */
 function mapDispatchToProps(dispatch) {
   return {
@@ -126,3 +129,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManangeRolePage);
+
+export {
+  ManangeRolePage as ManangeRole
+};

@@ -3,8 +3,8 @@ import types from './actionTypes';
 
 /**
  * loadRoleSuccess action
- * @param  {object} roles [description]
- * @return {object}      [description]
+ * @param  {object} roles
+ * @return {object} roles and action type
  */
 export function loadRoleSuccess(roles) {
   return {
@@ -17,8 +17,8 @@ export function loadRoleSuccess(roles) {
  * select current role action
  *
  * @export
- * @param {any} id
- * @returns {any} role id
+ * @param {integer} id
+ * @returns {object} role id and action type
  */
 export function setCurrentRole(id) {
   return {
@@ -29,7 +29,7 @@ export function setCurrentRole(id) {
 
 /**
  * delete from state the current selected role
- * @return {[type]} [description]
+ * @return {object} action type
  */
 export function deleteCurrentRole() {
   return {
@@ -53,7 +53,7 @@ export function loadRoles() {
  * create new role
  * POST /roles/
  * @param  {object} role role object to be svaed
- * @return {object}      response from api
+ * @return {object} response object from api
  */
 export function saveRole(role) {
   return (dispatch) => {
@@ -67,7 +67,7 @@ export function saveRole(role) {
  * update role
  * PUT /roles/:id
  * @param  {object} role role object to be updated
- * @return {object}      response from api
+ * @return {object} response object from api
  */
 export function updateRole(role) {
   return (dispatch, getState) => {
@@ -81,8 +81,8 @@ export function updateRole(role) {
 /**
  * delete role from db
  * DELETE /roles/:id
- * @param  {number} id role id
- * @return {object}    api response
+ * @param  {integer} id role id
+ * @return {object} api response
  */
 export function deleteRole(id) {
   return (dispatch) => {

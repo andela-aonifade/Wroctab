@@ -1,64 +1,50 @@
 /* eslint func-names: "off"*/
 /* eslint no-unused-vars: "off"*/
-const config = require('../../../nightwatch.conf.js');
+// const config = require('../../../nightwatch.conf.js');
 
 module.exports = {
-  'Doc Management Title': function (browser) {
+  'User sign in without credentials': (browser) => {
     browser
       .url('http://localhost:8080/login')
-      .waitForElementVisible('body')
-      .assert.title('Document Management System')
-      .saveScreenshot('doc-man-login.png')
-      .end();
+      .waitForElementVisible('body', 5000)
+      .setValue('input[name=email]', '')
+      .setValue('input[name=password]', '')
+      .click('.btn-login')
+      .waitForElementVisible('h4', 5000)
+      .assert
+        .containsText('h4', 'Login');
   },
-
-  'Login Users': function (browser) {
+  'User sign in with wrong email': (browser) => {
     browser
       .url('http://localhost:8080/login')
-      .waitForElementVisible('body')
-      .setValue('input[type=email]', 'anuonifade@gmail.com')
-      .setValue('input[type=password]', 'password')
-      .click('input[type="submit"]')
-      .waitForElementVisible('h4')
-      .assert.urlEquals('http://localhost:8080/')
-      .end();
+      .waitForElementVisible('body', 2000)
+      .setValue('input[name=email]', 'I do not exist')
+      .setValue('input[name=password]', 'password123')
+      .click('.btn-login')
+      .waitForElementVisible('h4', 5000)
+      .assert.containsText('h4', 'Login');
   },
-
-  'Admin User Dashboard Page': function (browser) {
+  'User sign in with wrong password': (browser) => {
     browser
       .url('http://localhost:8080/login')
-      .waitForElementVisible('input[type=email]')
-      .setValue('input[type=email]', 'anuonifade@gmail.com')
-      .setValue('input[type=password]', 'password')
-      .click('input[type="submit"]')
-      .waitForElementVisible('nav', 5000)
-      .assert.urlEquals('http://localhost:8080/')
+      .waitForElementVisible('body', 5000)
+      .setValue('input[name=email]', 'thePiper')
+      .setValue('input[name=password]', 'a very wrong password')
+      .click('.btn-login')
+      .waitForElementVisible('h4', 5000)
+      .assert.elementPresent('h4', 'Login');
+  },
+  'User sign in success': (browser) => {
+    browser
+      .url('http://localhost:8080/login')
+      .waitForElementVisible('body', 5000)
+      .click('.btn-login')
+      .setValue('input[name=email]', 'anthony@andela.com')
+      .setValue('input[name=password]', 'anthony')
+      .click('.btn-login')
+      .waitForElementVisible('div[id="dashboardBG"]', 5000)
       .assert.containsText('h4', 'DASHBOARD')
-      .assert.containsText('nav', 'Doc Management')
-      .assert.containsText('nav', 'My Documents')
-      .assert.containsText('nav', 'Manage Users')
-      .assert.containsText('nav', 'Manage Roles')
-      .assert.cssClassPresent('#adminTab', 'admin')
-      .assert.containsText('nav', 'Logout')
-      .click('nav ul li a#logout')
+      .assert.urlEquals(`${'http://localhost:8080/'}`)
       .end();
   },
-
-  'Regular Users Dashboard Page': function (browser) {
-    browser
-      .url('http://localhost:8080/login')
-      .waitForElementVisible('body')
-      .setValue('input[type=email]', 'uyi.sosa@gmail.com')
-      .setValue('input[type=password]', 'password')
-      .click('input[type="submit"]')
-      .waitForElementVisible('nav', 5000)
-      .assert.urlEquals('http://localhost:8080/')
-      .assert.containsText('h4', 'DASHBOARD')
-      .assert.containsText('nav', 'Doc Management')
-      .assert.containsText('nav', 'My Documents')
-      .assert.containsText('nav', 'Logout')
-      .assert.elementNotPresent('#adminTab')
-      .assert.cssClassNotPresent('nav', 'admin')
-      .end();
-  }
 };

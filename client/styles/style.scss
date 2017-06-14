@@ -9,7 +9,9 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
-
+.btn-add{
+  z-index: 99 !important;
+}
 .header-text{
   padding: 10px;
   color: white;
@@ -30,6 +32,15 @@ body {
 #signIn-box {
   opacity: 0.9;
 }
+
+.nav-transparent{
+  background:rgba(211,211,211,0);
+}
+
+#panel-transparent{
+  opacity: 0.8
+}
+
 
 .overlay{
   background-size: cover; 
@@ -123,7 +134,7 @@ body {
 }
 
 #tab-transparent{
-  background: rgba(54, 25, 25, 0);
+  background: rgba(0,128,128, 0);
 }
 
 .list-badge{
@@ -166,9 +177,11 @@ body {
   font-size: 13px;
   font-family: arial, serif;
   font-weight: bold;
-  -webkit-border-radius: 3em;
-  -moz-border-radius: 0.1em;
   -border-radius: 0.1em;
+}
+
+.alert-error {
+  display: none;
 }
 
 .footer {

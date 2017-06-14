@@ -8,7 +8,7 @@ import { addFlashMessage } from '../../actions/flashMessages';
 import * as userActions from '../../actions/userActions';
 import * as searchActions from '../../actions/searchActions';
 
-class UserSearchList extends React.Component {
+export class UserSearchList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,13 +83,14 @@ class UserSearchList extends React.Component {
       {this
         .props
         .searchedUsers
-        .map(user => <div id="card-alert" className="card white"
+        .map(user => <div id="panel-transparent"
+          className="card blue-grey z-depth-5"
         key={user.id}>
-          <div className="card-content teal-text">
+          <div className="card-content white-text" id="name">
             {user.name} - {user.email}
           </div>
           <div className="fixed-action-btn horizontal click-to-toggle edit">
-            <a className="btn-floating teal tooltipped"
+            <a className="btn-floating blue-grey tooltipped"
               data-position="top" data-delay="50"
               data-tooltip="click to view more"
               >
@@ -97,28 +98,27 @@ class UserSearchList extends React.Component {
             </a>
             <ul>
             <li onClick={this.viewUser} className="editDoc">
-              <a
-              className="btn-floating teal tooltipped"
+              <button
+              className="btn-floating blue-grey tooltipped"
               data-position="bottom" data-delay="50"
               data-tooltip="edit document">
                 <i id={user.id} className="material-icons">view_list</i>
-              </a>
+              </button>
             </li>
               <li onClick={this.editUser} className="editDoc">
-                <a
-                className="btn-floating teal tooltipped"
+                <button
+                className="btn-floating blue-grey tooltipped"
                 data-position="bottom" data-delay="50"
                 data-tooltip="edit document">
                   <i id={user.id} className="material-icons">mode_edit</i>
-                </a>
+                </button>
               </li>
               <li onClick={this.renderAlert}>
-                <a className="btn-floating teal darken-1 tooltipped"
+                <button className="btn-floating button darken-1 tooltipped"
                   data-position="bottom" data-delay="50"
-                  data-tooltip="delete document"
-                  >
+                  data-tooltip="delete document">
                   <i id={user.id} className="material-icons">delete</i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -155,8 +155,8 @@ UserSearchList.propTypes = {
 /**
  *
  * dispatch role actions
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object} dispatch to props object
  */
 function mapDispatchToProps(dispatch) {
   return {

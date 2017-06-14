@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import ListDetails from '../common/ListDetails.jsx';
 
 class UserViewPage extends React.Component {
@@ -30,12 +31,12 @@ class UserViewPage extends React.Component {
   render() {
     return (
       <div className="user-details">
-        <h4>User Details</h4>
+        <h4 className="white-text">User Details</h4>
       <ListDetails
         fullname={this.state.fullname}
         username={this.state.username}
         email={this.state.email}
-        createdAt={this.state.createdAt}
+        createdAt={moment(this.state.createdAt).format('llll')}
         />
 </div>
     );
@@ -50,9 +51,9 @@ UserViewPage.propTypes = {
 /**
  *
  *
- * @param {any} users
- * @param {any} id
- * @returns {any} object
+ * @param {object} users
+ * @param {integer} id
+ * @returns {string | null} user
  */
 function getUserId(users, id) {
   const user = users.filter((u) => {
@@ -67,8 +68,8 @@ function getUserId(users, id) {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} user details
  */
 const mapStateToProps = (state) => {
   const currentState = state.manageUsers;

@@ -1,22 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFlashMessage } from '../actions/flashMessages';
+import toastr from 'toastr';
 
 /**
  *
  *
  * @export
- * @param {any} ComposedComponent
+ * @param {object} ComposedComponent
  * @returns {any}
  */
 export default function (ComposedComponent) {
   class Authenticate extends React.Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {
-        this
-          .props
-          .addFlashMessage({
-            type: 'error', text: 'You need to login to access this page' });
+        toastr.error('You need to login to access this page');
         this
           .context
           .router
@@ -50,12 +47,12 @@ export default function (ComposedComponent) {
 /**
  *
  *
- * @param {any} state
+ * @param {object} state
  * @returns {boolean}
  */
   function mapStateToProps(state) {
     return { isAuthenticated: state.auth.isAuthenticated };
   }
 
-  return connect(mapStateToProps, { addFlashMessage })(Authenticate);
+  return connect(mapStateToProps)(Authenticate);
 }

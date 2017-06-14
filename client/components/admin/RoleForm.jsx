@@ -5,7 +5,7 @@ import toastr from 'toastr';
 import * as roleActions from '../../actions/roleActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
-class RoleForm extends React.Component {
+export class RoleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,9 +50,10 @@ class RoleForm extends React.Component {
   }
 
   render() {
-    const hasValue = this.props.currentRole;
+    const { currentRole } = this.props;
+    const hasValue = currentRole;
     const form = (
-      <div className="col s12 z-depth-5 card-panel">
+      <div className="col s12 z-depth-5 card blue-grey" id="panel-transparent">
         <form>
         <div className="row">
         <div className="input-field col s12">
@@ -72,7 +73,7 @@ class RoleForm extends React.Component {
           id="btnSave"
           type="submit"
           value="Save"
-          className="btn waves-effect waves-light teal darken-1"
+          className="btn waves-effect waves-light blue-grey darken-1"
           onClick={hasValue ? this.updateRole : this.saveRole}/>
           </div>
           </div>
@@ -95,9 +96,9 @@ RoleForm.propTypes = {
 /**
  *
  *
- * @param {any} roles
- * @param {any} id
- * @returns {any} object
+ * @param {object} roles
+ * @param {integer} id
+ * @returns {string | null} role id or null
  */
 function getRoleById(roles, id) {
   const role = roles.filter((rl) => {
@@ -112,8 +113,8 @@ function getRoleById(roles, id) {
 /**
  *
  *
- * @param {any} state
- * @returns {any}
+ * @param {object} state
+ * @returns {object} role
  */
 function mapStateToProps(state) {
   const currentState = state.manageRoles;
@@ -126,6 +127,7 @@ function mapStateToProps(state) {
     role = getRoleById(currentState.roles, roleId);
   }
   return {
+    currentRole: roleId,
     roleValue: role,
     auth: state.auth
   };
@@ -134,8 +136,8 @@ function mapStateToProps(state) {
 /**
  *
  *
- * @param {any} dispatch
- * @returns {any}
+ * @param {object} dispatch
+ * @returns {object}
  */
 function mapDispatchToProps(dispatch) {
   return {
